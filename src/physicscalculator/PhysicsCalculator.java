@@ -17,12 +17,19 @@ public class PhysicsCalculator {
         double t;
         double d;
         while (choice > 3 || choice < 1) {
+            System.out.println("");
             System.out.println("1: Kinematics");
             System.out.println("2: Work, Energy, Momentum");
             System.out.println("3: Dynamics");
             choice = kb.nextInt();
         }
         if (choice == 1) {
+            while (choice > 3 || choice < 1) {
+                System.out.println("1: Kinematics");
+                System.out.println("2: Work, Energy, Momentum");
+                System.out.println("3: Dynamics");
+                choice = kb.nextInt();
+            }
             System.out.println("Initial velocity = ?");
             v1 = kb.nextDouble();
             System.out.println("Final velocity = ?");
@@ -35,7 +42,7 @@ public class PhysicsCalculator {
             d = kb.nextDouble();
 
         }
-        if (choice == 2){
+        if (choice == 2) {
             System.out.println("Initial velocity = ?");
             v1 = kb.nextDouble();
             System.out.println("Final velocity = ?");
@@ -47,7 +54,7 @@ public class PhysicsCalculator {
             System.out.println("Distance = ?");
             d = kb.nextDouble();
         }
-        if (choice == 3){
+        if (choice == 3) {
             System.out.println("Initial velocity = ?");
             v1 = kb.nextDouble();
             System.out.println("Final velocity = ?");
