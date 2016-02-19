@@ -8,6 +8,8 @@ import java.util.Scanner;
  */
 public class PhysicsCalculator {
 
+    //i am a god
+    
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         int choice = 0;
