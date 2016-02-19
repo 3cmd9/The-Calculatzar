@@ -11,6 +11,7 @@ public class PhysicsCalculator {
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         int choice = 0;
+        int choice2 = 0;
         double v1;
         double v2;
         double a;
@@ -35,7 +36,13 @@ public class PhysicsCalculator {
             d = kb.nextDouble();
 
         }
-        if (choice == 2){
+        if (choice == 2) {
+            while (choice2 > 3 || choice2 < 1) {
+                System.out.println("1: Momentum");
+                System.out.println("2: Impulse");
+                System.out.println("3: Dynamics");
+                choice = kb.nextInt();
+            }
             System.out.println("Initial velocity = ?");
             v1 = kb.nextDouble();
             System.out.println("Final velocity = ?");
@@ -47,7 +54,7 @@ public class PhysicsCalculator {
             System.out.println("Distance = ?");
             d = kb.nextDouble();
         }
-        if (choice == 3){
+        if (choice == 3) {
             System.out.println("Initial velocity = ?");
             v1 = kb.nextDouble();
             System.out.println("Final velocity = ?");
