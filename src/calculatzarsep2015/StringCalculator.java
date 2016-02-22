@@ -76,7 +76,11 @@ public class StringCalculator {
 
     }
 
-    public static String asciiConverter(String word) {
+    public static String asciiConverter(String statement) {
+        String ascii[]=new String[statement.length()];
+        for (int i=0;i<statement.length();i++){
+            
+        }
         return null;
         
     }
