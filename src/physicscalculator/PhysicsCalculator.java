@@ -15,9 +15,11 @@ public class PhysicsCalculator {
         int choice = 0;
         int choice2 = 0;
         int choice21 = 0;
+        int timeChoice = 0;
         double momMass;
         double momVel;
         double momentum;
+        double change;
         double v1;
         double v2;
         double a;
@@ -93,6 +95,34 @@ public class PhysicsCalculator {
                     System.out.println("2: Force");
                     System.out.println("3: Change in time");
                     choice21 = kb.nextInt();
+                }
+                if (choice21 == 1) {
+                    while (timeChoice > 2 || timeChoice < 1){
+                        System.out.println("For time:");
+                        System.out.println("1. Has it been calulated");
+                        System.out.println("2. Do you need to find the difference in values");
+                        timeChoice = kb.nextInt();
+                    }
+                    if (timeChoice == 1){
+                        
+                    }
+                    System.out.println("Mass(kg) = ?");
+                    momMass = kb.nextDouble();
+                    System.out.println("Velocity(m/s) = ?");
+                    momVel = kb.nextDouble();
+                    System.out.println("Momentum = " + momentum(momVel, momMass) + "kg m/s");
+                } else if (choice21 == 2) {
+                    System.out.println("Momentum (kg m/s) = ?");
+                    momentum = kb.nextDouble();
+                    System.out.println("Velocity(m/s) = ?");
+                    momVel = kb.nextDouble();
+                    System.out.println("Velocity = " + momMass(momentum, momVel) + "kg m/s");
+                } else if (choice21 == 3) {
+                    System.out.println("Mass(kg) = ?");
+                    momMass = kb.nextDouble();
+                    System.out.println("Momentum (kg m/s) = ?");
+                    momentum = kb.nextDouble();
+                    System.out.println("Momentum = " + momVel(momentum, momMass) + " kg m/s");
                 }
             } else if (choice2 == 3) {
 
