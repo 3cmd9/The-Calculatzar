@@ -10,7 +10,7 @@ package calculatzarsep2015;
  *
  * @author MikeRD
  */
-public class CalculatzarSep2015 {
+public class Calculatzar2016 {
 
     /**
      * @param args the command line arguments
