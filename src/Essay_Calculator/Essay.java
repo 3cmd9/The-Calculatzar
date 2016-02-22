@@ -9,6 +9,15 @@ package Essay_Calculator;
  *
  * @author SelbyJ
  */
+import java.util.*;
 public class Essay {
-    
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+    //get input of user
+        //everytime there is a space, ++
+        //add 1 for 1st word. 
+        int count;
+        String essay;
+        
+    }
 }
