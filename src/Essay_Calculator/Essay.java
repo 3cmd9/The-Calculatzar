@@ -18,6 +18,6 @@ public class Essay {
         //add 1 for 1st word. 
         int count;
         String essay;
-        
+        //
     }
 }
