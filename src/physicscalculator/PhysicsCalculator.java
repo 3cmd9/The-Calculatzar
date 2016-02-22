@@ -11,6 +11,11 @@ public class PhysicsCalculator {
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         int choice = 0;
+        int choice2 = 0;
+        int choice21 = 0;
+        double momMass;
+        double momVel;
+        double momentum;
         double v1;
         double v2;
         double a;
@@ -44,19 +49,52 @@ public class PhysicsCalculator {
             t = kb.nextDouble();
             System.out.println("Distance = ?");
             d = kb.nextDouble();
-
         }
         if (choice == 2) {
-            System.out.println("Initial velocity = ?");
-            v1 = kb.nextDouble();
-            System.out.println("Final velocity = ?");
-            v2 = kb.nextDouble();
-            System.out.println("Acceleration = ?");
-            a = kb.nextDouble();
-            System.out.println("Time = ?");
-            t = kb.nextDouble();
-            System.out.println("Distance = ?");
-            d = kb.nextDouble();
+            while (choice2 > 3 || choice2 < 1) {
+                System.out.println("1: Momentum");
+                System.out.println("2: Impulse");
+                System.out.println("3: Dynamics");
+                choice2 = kb.nextInt();
+            }
+            if (choice2 == 1) {
+                while (choice21 > 3 || choice21 < 1) {
+                    System.out.println("Variable to be solved for:");
+                    System.out.println("1: Momentum");
+                    System.out.println("2: Mass");
+                    System.out.println("3: Velocity");
+                    choice21 = kb.nextInt();
+                }
+                if (choice21 == 1) {
+                    System.out.println("Mass(kg) = ?");
+                    momMass = kb.nextDouble();
+                    System.out.println("Velocity(m/s) = ?");
+                    momVel = kb.nextDouble();
+                    System.out.println("Momentum = " + momentum(momVel, momMass) + "kg m/s");
+                } else if (choice21 == 2) {
+                    System.out.println("Momentum (kg m/s) = ?");
+                    momentum = kb.nextDouble();
+                    System.out.println("Velocity(m/s) = ?");
+                    momVel = kb.nextDouble();
+                    System.out.println("Velocity = " + momMass(momentum, momVel) + "kg m/s");
+                } else if (choice21 == 3) {
+                    System.out.println("Mass(kg) = ?");
+                    momMass = kb.nextDouble();
+                    System.out.println("Momentum (kg m/s) = ?");
+                    momentum = kb.nextDouble();
+                    System.out.println("Momentum = " + momVel(momentum, momMass) + " kg m/s");
+                } else if (choice2 == 2) {
+                    while (choice21 > 3 || choice21 < 1) {
+                        System.out.println("Variable to be solved for:");
+                        System.out.println("1: Momentum");
+                        System.out.println("2: Mass");
+                        System.out.println("3: Velocity");
+                        choice21 = kb.nextInt();
+                    }
+                } else if (choice2 == 3) {
+                    
+                }
+            }
         }
         if (choice == 3) {
             System.out.println("Initial velocity = ?");
@@ -71,5 +109,16 @@ public class PhysicsCalculator {
             d = kb.nextDouble();
         }
     }
-
+    public static Double momentum(Double vel, Double mass) {
+        double momentum = vel * mass;
+        return momentum;
+    }
+    public static Double momVel(Double mom, Double mass){
+        Double vel = mom/mass;
+        return vel;
+    }
+    public static Double momMass(Double mom, Double vel){
+        Double mass = mom/vel;
+        return mass;
+    }
 }
