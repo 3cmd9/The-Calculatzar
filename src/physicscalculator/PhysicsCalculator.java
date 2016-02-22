@@ -83,17 +83,17 @@ public class PhysicsCalculator {
                     System.out.println("Momentum (kg m/s) = ?");
                     momentum = kb.nextDouble();
                     System.out.println("Momentum = " + momVel(momentum, momMass) + " kg m/s");
-                } else if (choice2 == 2) {
-                    while (choice21 > 3 || choice21 < 1) {
-                        System.out.println("Variable to be solved for:");
-                        System.out.println("1: Momentum");
-                        System.out.println("2: Mass");
-                        System.out.println("3: Velocity");
-                        choice21 = kb.nextInt();
-                    }
-                } else if (choice2 == 3) {
-                    
                 }
+            } else if (choice2 == 2) {
+                while (choice21 > 3 || choice21 < 1) {
+                    System.out.println("Variable to be solved for:");
+                    System.out.println("1: Impulse");
+                    System.out.println("2: Force");
+                    System.out.println("3: Change in time");
+                    choice21 = kb.nextInt();
+                }
+            } else if (choice2 == 3) {
+
             }
         }
         if (choice == 3) {
@@ -109,34 +109,40 @@ public class PhysicsCalculator {
             d = kb.nextDouble();
         }
     }
+
     /**
-     * 
+     *
      * @param vel a double that represents velocity
      * @param mass a double that represents mass
-     * @return a double that represents the momentum acquired by multiplying velocity by mass
+     * @return a double that represents the momentum acquired by multiplying
+     * velocity by mass
      */
     public static Double momentum(Double vel, Double mass) {
         double momentum = vel * mass;
         return momentum;
     }
+
     /**
-     * 
+     *
      * @param mom a double that represents momentum
      * @param mass a double that represents mass
-     * @return a double that represents velocity acquired by dividing momentum by mass
+     * @return a double that represents velocity acquired by dividing momentum
+     * by mass
      */
-    public static Double momVel(Double mom, Double mass){
-        Double vel = mom/mass;
+    public static Double momVel(Double mom, Double mass) {
+        Double vel = mom / mass;
         return vel;
     }
+
     /**
-     * 
+     *
      * @param mom
      * @param vel a double that represents velocity
-     * @return a double that represents mass acquired by dividing momentum by velocity
+     * @return a double that represents mass acquired by dividing momentum by
+     * velocity
      */
-    public static Double momMass(Double mom, Double vel){
-        Double mass = mom/vel;
+    public static Double momMass(Double mom, Double vel) {
+        Double mass = mom / vel;
         return mass;
     }
 }
