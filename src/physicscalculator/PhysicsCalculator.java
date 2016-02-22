@@ -84,7 +84,7 @@ public class PhysicsCalculator {
                     System.out.println("Mass of object = ?");
                     double m = kb.nextDouble();
                     double f = fricForce(cf, m);
-                    System.out.println("The frictional force is " + ff);
+                    System.out.println("The frictional force is " + f);
                 }
         }
     }
