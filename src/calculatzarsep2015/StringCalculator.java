@@ -12,7 +12,8 @@ import java.util.*;
  * @author 341167849
  */
 public class StringCalculator {
-     public static int inputCount(String data, String searchWord) {
+
+    public static int inputCount(String data, String searchWord) {
         String tempWord = "", capWord;
         int occurenceCount = 0;
         capWord = searchWord.substring(0, 1).toUpperCase() + searchWord.substring(1, searchWord.length());
@@ -63,7 +64,8 @@ public class StringCalculator {
             //if (!message[x].equalsIgnoreCase(x))
         }
     }
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
         String data, searchWord;
         System.out.println("Please enter the info you which to analyze.");
@@ -73,12 +75,29 @@ public class StringCalculator {
         System.out.println("The keyword(" + searchWord + ") appears " + inputCount(data, searchWord) + " time(s).");
     }
 
-    public static String asciiConverter(String statement) {
-        String ascii[]=new String[statement.length()];
-        for (int i=0;i<statement.length();i++){
-            
+    public static String[] asciiConverter(String statement) {
+        String ascii[] = new String[statement.length()];
+        for (int i = 0; i < statement.length(); i++) {
+            ascii[i] = ((int) (statement.charAt(i)) + " ");
         }
+
         return null;
-        
+
+    }
+
+    public static int characterCount(String statement) {
+        int cCount = statement.length();
+        return cCount;
+    }
+
+    public static int vowelCount(String statement) {
+        int vCount = 0;
+        statement = statement.toUpperCase();
+        for (int i = 0; i < statement.length(); i++) {
+            if (statement.charAt(i) == 'A' || statement.charAt(i) == 'E' || statement.charAt(i) == 'I' || statement.charAt(i) == 'O' || statement.charAt(i) == 'U' || statement.charAt(i) == 'Y') {
+                vCount++;
+            }
+        }
+        return vCount;
     }
 }
