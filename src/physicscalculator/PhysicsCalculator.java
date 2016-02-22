@@ -70,19 +70,19 @@ public class PhysicsCalculator {
                     momMass = kb.nextDouble();
                     System.out.println("Velocity(m/s) = ?");
                     momVel = kb.nextDouble();
-                    System.out.println(momentum(momVel, momMass) + "kg m/s");
+                    System.out.println("Momentum = " + momentum(momVel, momMass) + "kg m/s");
                 } else if (choice21 == 2) {
                     System.out.println("Momentum (kg m/s) = ?");
                     momentum = kb.nextDouble();
                     System.out.println("Velocity(m/s) = ?");
                     momVel = kb.nextDouble();
-                    System.out.println(momVel * momentum + "kg m/s");
+                    System.out.println("Velocity = " + momMass(momentum, momVel) + "kg m/s");
                 } else if (choice21 == 3) {
                     System.out.println("Mass(kg) = ?");
                     momMass = kb.nextDouble();
                     System.out.println("Momentum (kg m/s) = ?");
                     momentum = kb.nextDouble();
-                    System.out.println("Momentum = " + momentum * momMass + " kg m/s");
+                    System.out.println("Momentum = " + momVel(momentum, momMass) + " kg m/s");
                 } else if (choice2 == 2) {
                     while (choice21 > 3 || choice21 < 1) {
                         System.out.println("Variable to be solved for:");
@@ -108,15 +108,17 @@ public class PhysicsCalculator {
             System.out.println("Distance = ?");
             d = kb.nextDouble();
         }
-        /**
-         * 
-         * @param vel a double to represent velocity
-         * @param mass a double to represent momentum
-         * @return 
-         */
     }
     public static Double momentum(Double vel, Double mass) {
         double momentum = vel * mass;
         return momentum;
+    }
+    public static Double momVel(Double mom, Double mass){
+        Double vel = mom/mass;
+        return vel;
+    }
+    public static Double momMass(Double mom, Double vel){
+        Double mass = mom/vel;
+        return mass;
     }
 }
