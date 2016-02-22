@@ -109,14 +109,32 @@ public class PhysicsCalculator {
             d = kb.nextDouble();
         }
     }
+    /**
+     * 
+     * @param vel a double that represents velocity
+     * @param mass a double that represents mass
+     * @return a double that represents the momentum acquired by multiplying velocity by mass
+     */
     public static Double momentum(Double vel, Double mass) {
         double momentum = vel * mass;
         return momentum;
     }
+    /**
+     * 
+     * @param mom a double that represents momentum
+     * @param mass a double that represents mass
+     * @return a double that represents velocity acquired by dividing momentum by mass
+     */
     public static Double momVel(Double mom, Double mass){
         Double vel = mom/mass;
         return vel;
     }
+    /**
+     * 
+     * @param mom
+     * @param vel a double that represents velocity
+     * @return a double that represents mass acquired by dividing momentum by velocity
+     */
     public static Double momMass(Double mom, Double vel){
         Double mass = mom/vel;
         return mass;
