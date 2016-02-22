@@ -19,6 +19,7 @@ public class PhysicsCalculator {
         double momMass;
         double momVel;
         double momentum;
+        double force;
         double change;
         double v1;
         double v2;
@@ -104,7 +105,8 @@ public class PhysicsCalculator {
                         timeChoice = kb.nextInt();
                     }
                     if (timeChoice == 1){
-                        
+                        System.out.println("Force(N) = ?");
+                        force = kb.nextDouble();
                     }
                     System.out.println("Mass(kg) = ?");
                     momMass = kb.nextDouble();
