@@ -75,21 +75,46 @@ public class StringCalculator {
         System.out.println("The keyword(" + searchWord + ") appears " + inputCount(data, searchWord) + " time(s).");
     }
 
-    public static String[] asciiConverter(String statement) {
+    /**
+     * Creates a string of all the ASCII values separated by a space each by
+     * using a for loop
+     *
+     * @param statement a string with all the characters to be converted into
+     * ASCII values
+     * @return returns a string which contains every single ASCII value (in
+     * decimal) to be read out in other methods
+     */
+    public static String asciiConverter(String statement) {
+        String output = "";
         String ascii[] = new String[statement.length()];
         for (int i = 0; i < statement.length(); i++) {
             ascii[i] = ((int) (statement.charAt(i)) + " ");
+            output = output + ascii[i];
         }
-
-        return null;
+        return output;
 
     }
 
+    /**
+     * Character count creates a variable equal to the length of the String,
+     * it's a very simple method
+     *
+     * @param statement contains string to be analyzed
+     * @return returns the amount of amount of characters in the string
+     */
     public static int characterCount(String statement) {
         int cCount = statement.length();
         return cCount;
     }
 
+    /**
+     * vowelCount counts the amount of vowels in a string one character at a
+     * time and then returns the amount of vowels which occur
+     *
+     * @param statement takes the statement to have the vowels counted
+     * @return returns an integer equal to the amount of vowels that occur in
+     * the string
+     */
     public static int vowelCount(String statement) {
         int vCount = 0;
         statement = statement.toUpperCase();
