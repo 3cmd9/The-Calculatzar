@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class PhysicsCalculator {
 
     //i am a god
-    
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         int choice = 0;
@@ -98,15 +97,18 @@ public class PhysicsCalculator {
                     choice21 = kb.nextInt();
                 }
                 if (choice21 == 1) {
-                    while (timeChoice > 2 || timeChoice < 1){
+                    while (timeChoice > 2 || timeChoice < 1) {
                         System.out.println("For time:");
                         System.out.println("1. Has it been calulated");
                         System.out.println("2. Do you need to find the difference in values");
                         timeChoice = kb.nextInt();
                     }
-                    if (timeChoice == 1){
+                    if (timeChoice == 1) {
                         System.out.println("Force(N) = ?");
                         force = kb.nextDouble();
+                        System.out.println("Change in time(s) = ?");
+                        change = kb.nextDouble();
+                        System.out.println("impulse = " + momentum(force, change) + "Ns");
                     }
                     System.out.println("Mass(kg) = ?");
                     momMass = kb.nextDouble();
@@ -132,63 +134,66 @@ public class PhysicsCalculator {
         }
         if (choice == 3) {
             System.out.println("Variable to be solved for:");
-                System.out.println("1: Net Force");
-                System.out.println("2: Gravitational Force");
-                System.out.println("3: Frictional Force");
-                int choice3 = kb.nextInt();
-                if (choice3 == 1) {
-                    System.out.println("Mass of object = ?");
-                    double m = kb.nextDouble();
-                    System.out.println("Acceleration of object = ?");
-                    a = kb.nextDouble();
-                    double net = netForce(m, a);
-                    System.out.println("The net force is " + net);
-                } else if (choice3 == 2) {
-                    System.out.println("Mass of object = ?");
-                    double m = kb.nextDouble();
-                    double g = gravForce(m);
-                    System.out.println("The gravitational force is " + g);
-                } else if (choice3 == 3) {
-                    System.out.println("Coefficient of friciton = ?");
-                    double cf = kb.nextDouble();
-                    System.out.println("Mass of object = ?");
-                    double m = kb.nextDouble();
-                    double f = fricForce(cf, m);
-                    System.out.println("The frictional force is " + f);
-                }
+            System.out.println("1: Net Force");
+            System.out.println("2: Gravitational Force");
+            System.out.println("3: Frictional Force");
+            int choice3 = kb.nextInt();
+            if (choice3 == 1) {
+                System.out.println("Mass of object = ?");
+                double m = kb.nextDouble();
+                System.out.println("Acceleration of object = ?");
+                a = kb.nextDouble();
+                double net = netForce(m, a);
+                System.out.println("The net force is " + net);
+            } else if (choice3 == 2) {
+                System.out.println("Mass of object = ?");
+                double m = kb.nextDouble();
+                double g = gravForce(m);
+                System.out.println("The gravitational force is " + g);
+            } else if (choice3 == 3) {
+                System.out.println("Coefficient of friciton = ?");
+                double cf = kb.nextDouble();
+                System.out.println("Mass of object = ?");
+                double m = kb.nextDouble();
+                double f = fricForce(cf, m);
+                System.out.println("The frictional force is " + f);
+            }
         }
     }
 
     /**
-     * 
+     *
      * @param mass
      * @param acc
-     * @return 
+     * @return
      */
-    public static double netForce (double mass, double acc) {
+    public static double netForce(double mass, double acc) {
         double nf = mass * acc;
         return nf;
     }
+
     /**
-     * 
+     *
      * @param mass
-     * @return 
+     * @return
      */
-    public static double gravForce (double mass) {
+    public static double gravForce(double mass) {
         double gf = mass * 9.8;
         return gf;
     }
+
     /**
-     * 
+     *
      * @param friction
      * @param mass
-     * @return 
+     * @return
      */
-    public static double fricForce (double friction, double mass) {
+    public static double fricForce(double friction, double mass) {
         double ff = friction * mass * 9.8;
         return ff;
     }
-     /**
+
+    /**
      *
      * @param vel a double that represents velocity
      * @param mass a double that represents mass
