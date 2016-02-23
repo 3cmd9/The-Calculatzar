@@ -5,9 +5,7 @@
  */
 package GraphingCalculator;
 
-import static GraphingCalculator.DerivativeCalc.coeff;
-import static GraphingCalculator.DerivativeCalc.exp;
-import static GraphingCalculator.DerivativeCalc.integralD;
+import static GraphingCalculator.DerivativeCalc.*;
 import java.awt.*;
 
 /**
@@ -195,6 +193,7 @@ public class GUI extends javax.swing.JFrame {
             g.fillRect((int)drawx, (int)drawy, 2, 2);        //Draw dot on coordinate
         }while (x <= 100);
         
+        coefficientD();
     }//GEN-LAST:event_jButton1MouseClicked
     
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
