@@ -14,7 +14,7 @@ import java.math.RoundingMode;
  */
 public class DerivativeCalc {
     
-    public final static int input = 4;
+    public final static int input = 1;
     public final static int length = input + 1;
     public final static int x = 4;
     public final static int y = 4;
@@ -43,6 +43,7 @@ public class DerivativeCalc {
         for (int j = 0; j < length; j++){
             exp[j] --;
             coeff[j] *= exp[j];
+            System.out.print(round(coeff[j]) + "x" + "^" + round(exp[j]) + " ");
         }
     }
     
