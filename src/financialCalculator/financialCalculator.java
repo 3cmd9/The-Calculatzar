@@ -33,13 +33,13 @@ public class financialCalculator {
                 double rate = input.nextDouble();
                 double numOfYears = input.nextDouble();
                 System.out.println(simpleInterest(princiAmt, rate, numOfYears));
-            } else if (typeOfInter == 2){
+            } else if (typeOfInter == 2) {
                 System.out.println("Please enter Principal Amount, Interest Rate, Number Of Times Compunded, and the Number of Years");
                 double princiAmt = input.nextDouble();
                 double rate = input.nextDouble();
-            } else if (typeOfInter == 3) {
-                // Jordans stuff goes here
             }
+        } else if (decision == 3) {
+            // Jordans stuff goes here
         }
     }
 
@@ -76,6 +76,9 @@ public class financialCalculator {
 
         return payment;
     }
+
+    public static double futureValue(double presentValue, double interestRate, double numberOfYears) {
+        double FV = presentValue * Math.pow((1 + interestRate), numberOfYears);
+        return FV;
+    }
 }
-
-
