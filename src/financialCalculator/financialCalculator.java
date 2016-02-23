@@ -43,6 +43,10 @@ public class financialCalculator {
                 System.out.println("Please enter Principal Amount, Interest Rate, Number Of Times Compunded, and the Number of Years");
                 double princiAmt = input.nextDouble();
                 double rate = input.nextDouble();
+                double numOfComp = input.nextDouble();
+                double numOfYears = input.nextDouble();
+                System.out.println(compoundInterest(princiAmt, rate, numOfComp, numOfYears));
+
             }
         } else if (decision == 3) {
             // Jordans stuff goes here
