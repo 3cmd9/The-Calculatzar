@@ -66,16 +66,13 @@ public class StringCalculator {
     }
 
     public static void main(String[] args) {
-        String ari = "camel 1 case 3 test 2";
-        ari = camelCase(ari);
-        System.out.println(ari);
-        /*Scanner reader = new Scanner(System.in);
-         String data, searchWord;
-         System.out.println("Please enter the info you which to analyze.");
-         data = reader.nextLine();
-         System.out.println("Please enter the keyword to search for.");
-         searchWord = reader.next().toLowerCase();
-         System.out.println("The keyword(" + searchWord + ") appears " + inputCount(data, searchWord) + " time(s).");*/
+        Scanner reader = new Scanner(System.in);
+        String data, searchWord;
+        System.out.println("Please enter the info you which to analyze.");
+        data = reader.nextLine();
+        System.out.println("Please enter the keyword to search for.");
+        searchWord = reader.next().toLowerCase();
+        System.out.println("The keyword(" + searchWord + ") appears " + inputCount(data, searchWord) + " time(s).");
     }
 
     /**
@@ -137,7 +134,7 @@ public class StringCalculator {
 
     /**
      * This converts sentences into camel case and will attempt to ignore extra
-     * spaces, but leave in punctuation
+     * spaces, but leave in punctuation and numbers
      *
      * @param statement takes in the statement that is requested to be converted
      * @return returns a String which is the converted sentence
