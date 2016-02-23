@@ -71,14 +71,31 @@ public class StringCalculator {
     }
      public static void main(String[] args) {
         inputCount();
+     }
+
+    public static String[] asciiConverter(String statement) {
+        String ascii[] = new String[statement.length()];
+        for (int i = 0; i < statement.length(); i++) {
+            ascii[i] = ((int) (statement.charAt(i)) + " ");
+        }
+
+        return null;
+
     }
 
-    public static String asciiConverter(String statement) {
-        String ascii[]=new String[statement.length()];
-        for (int i=0;i<statement.length();i++){
-            
+    public static int characterCount(String statement) {
+        int cCount = statement.length();
+        return cCount;
+    }
+
+    public static int vowelCount(String statement) {
+        int vCount = 0;
+        statement = statement.toUpperCase();
+        for (int i = 0; i < statement.length(); i++) {
+            if (statement.charAt(i) == 'A' || statement.charAt(i) == 'E' || statement.charAt(i) == 'I' || statement.charAt(i) == 'O' || statement.charAt(i) == 'U' || statement.charAt(i) == 'Y') {
+                vCount++;
+            }
         }
-        return null;
-        
+        return vCount;
     }
 }
