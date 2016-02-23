@@ -21,6 +21,7 @@ public class PhysicsCalculator {
         double momentum;
         double force;
         double energy;
+        double height;
         double change;
         double time1;
         double time2 = 0;
@@ -190,6 +191,28 @@ public class PhysicsCalculator {
                         mass = kb.nextDouble();
                         System.out.println("Velocity = " + kineticVelocity(energy, mass) + " m/s");
                     }
+                }else if (choice21 == 2){
+                    //mgh
+                    while (choice210 > 3 || choice210 < 1) {
+                        System.out.println("Variable to be solved for:");
+                        System.out.println("1: Energy");
+                        System.out.println("2: Mass");
+                        System.out.println("3: Height");
+                        choice210 = kb.nextInt();
+                    }
+                    if(choice210 == 1){
+                        System.out.println("Height(m) = ?");
+                        energy = kb.nextDouble();
+                        System.out.println("Mass(kg) = ?");
+                        mass = kb.nextDouble();
+                        System.out.println("Energy = " + fricForce(energy, mass) + " J");
+                    }else if(choice210 == 2){
+                        System.out.println("Height(m) = ?");
+                        energy = kb.nextDouble();
+                        System.out.println("Energy(J) = ?");
+                        height = kb.nextDouble();
+                        System.out.println("Mass = " + potentialMass(energy, height) + " kg");
+                    }
                 }
             }
         }
@@ -293,5 +316,9 @@ public class PhysicsCalculator {
         Double v;
         v = Math.sqrt((2*E)/m);
         return v;
+    }
+    public static Double potentialMass(Double E, Double h){
+        Double m = E/(h*9.8);
+        return m;
     }
 }
