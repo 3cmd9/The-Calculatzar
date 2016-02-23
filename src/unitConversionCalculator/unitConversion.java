@@ -40,11 +40,14 @@ public class unitConversion {
         // everything compared to cm first and inch first
         // int[] dUnit = new int[7];
         // everything is converted smallest first
+             
         int dif = cUnit - dUnit;
         dist = dist * Math.pow(10, dif);
 
         return dist;
     }
+
+    
 
     public static double convertMass(double imput, String imputType, String outputType) {
         /*
