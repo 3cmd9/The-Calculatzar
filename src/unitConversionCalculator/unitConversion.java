@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package calculatzarsep2015;
+package unitConversionCalculator;
 
 import java.util.Scanner;
 
@@ -14,8 +14,7 @@ import java.util.Scanner;
 public class unitConversion {
 
 
-    public static void main(String[] args) {
-    
+  
     /*
     inputs
         units of measurement(imperial and metric)
@@ -80,7 +79,7 @@ public class unitConversion {
      */
 
     // cm[1], m[2], km[3],      inch[4], feet[5], yards[6], miles[7]
-
+    
     public static double distanceConvert(double dist, int desiredUnit, int currentUnit) {
 
         // everything compared to cm first and inch first
@@ -133,8 +132,9 @@ public class unitConversion {
 
         return dist;
     }
+    public static void main(String[] args) {
 }
-    */
+
     
    
    
