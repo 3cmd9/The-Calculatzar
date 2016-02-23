@@ -14,12 +14,17 @@ public class PhysicsCalculator {
         int choice = 0;
         int choice2 = 0;
         int choice21 = 0;
+        int choice210 = 0;
         int timeChoice = 0;
-        double momMass;
-        double momVel;
+        double mass;
+        double vel;
         double momentum;
         double force;
+        double energy;
         double change;
+        double time1;
+        double time2 = 0;
+        double impulse;
         double v1;
         double v2;
         double a;
@@ -58,7 +63,7 @@ public class PhysicsCalculator {
             while (choice2 > 3 || choice2 < 1) {
                 System.out.println("1: Momentum");
                 System.out.println("2: Impulse");
-                System.out.println("3: Dynamics");
+                System.out.println("3: Energy");
                 choice2 = kb.nextInt();
             }
             if (choice2 == 1) {
@@ -71,22 +76,22 @@ public class PhysicsCalculator {
                 }
                 if (choice21 == 1) {
                     System.out.println("Mass(kg) = ?");
-                    momMass = kb.nextDouble();
+                    mass = kb.nextDouble();
                     System.out.println("Velocity(m/s) = ?");
-                    momVel = kb.nextDouble();
-                    System.out.println("Momentum = " + momentum(momVel, momMass) + "kg m/s");
+                    vel = kb.nextDouble();
+                    System.out.println("Momentum = " + multiply(vel, mass) + " kg m/s");
                 } else if (choice21 == 2) {
                     System.out.println("Momentum (kg m/s) = ?");
                     momentum = kb.nextDouble();
                     System.out.println("Velocity(m/s) = ?");
-                    momVel = kb.nextDouble();
-                    System.out.println("Velocity = " + momMass(momentum, momVel) + "kg m/s");
+                    vel = kb.nextDouble();
+                    System.out.println("Velocity = " + divide(momentum, vel) + " kg m/s");
                 } else if (choice21 == 3) {
                     System.out.println("Mass(kg) = ?");
-                    momMass = kb.nextDouble();
+                    mass = kb.nextDouble();
                     System.out.println("Momentum (kg m/s) = ?");
                     momentum = kb.nextDouble();
-                    System.out.println("Momentum = " + momVel(momentum, momMass) + " kg m/s");
+                    System.out.println("Momentum = " + divide(momentum, mass) + " kg m/s");
                 }
             } else if (choice2 == 2) {
                 while (choice21 > 3 || choice21 < 1) {
@@ -108,28 +113,84 @@ public class PhysicsCalculator {
                         force = kb.nextDouble();
                         System.out.println("Change in time(s) = ?");
                         change = kb.nextDouble();
-                        System.out.println("impulse = " + momentum(force, change) + "Ns");
+                        System.out.println("Impulse = " + multiply(force, change) + " Ns");
+                    } else if (timeChoice == 2) {
+                        System.out.println("Force(N) = ?");
+                        force = kb.nextDouble();
+                        System.out.println("Time 1(s) = ?");
+                        time1 = kb.nextDouble();
+                        while (time2 <= time1) {
+                            System.out.println("Time 2(s) = ?");
+                            time2 = kb.nextDouble();
+                        }
+                        System.out.println("Impulse = " + multiply(force, subtract(time2, time1)) + " Ns");
                     }
-                    System.out.println("Mass(kg) = ?");
-                    momMass = kb.nextDouble();
-                    System.out.println("Velocity(m/s) = ?");
-                    momVel = kb.nextDouble();
-                    System.out.println("Momentum = " + momentum(momVel, momMass) + "kg m/s");
                 } else if (choice21 == 2) {
-                    System.out.println("Momentum (kg m/s) = ?");
-                    momentum = kb.nextDouble();
-                    System.out.println("Velocity(m/s) = ?");
-                    momVel = kb.nextDouble();
-                    System.out.println("Velocity = " + momMass(momentum, momVel) + "kg m/s");
+                    while (timeChoice > 2 || timeChoice < 1) {
+                        System.out.println("For time:");
+                        System.out.println("1. Has it been calulated");
+                        System.out.println("2. Do you need to find the difference in values");
+                        timeChoice = kb.nextInt();
+                    }
+                    if (timeChoice == 1) {
+                        System.out.println("Impulse(Ns) = ?");
+                        impulse = kb.nextDouble();
+                        System.out.println("Change in time(s) = ?");
+                        change = kb.nextDouble();
+                        System.out.println("Force = " + divide(impulse, change) + " N");
+                    } else if (timeChoice == 2) {
+                        System.out.println("Impulse(Ns) = ?");
+                        impulse = kb.nextDouble();
+                        System.out.println("Time 1(s) = ?");
+                        time1 = kb.nextDouble();
+                        while (time2 <= time1) {
+                            System.out.println("Time 2(s) = ?");
+                            time2 = kb.nextDouble();
+                        }
+                        System.out.println("Force = " + divide(impulse, subtract(time2, time1)) + " N");
+                    }
                 } else if (choice21 == 3) {
-                    System.out.println("Mass(kg) = ?");
-                    momMass = kb.nextDouble();
-                    System.out.println("Momentum (kg m/s) = ?");
-                    momentum = kb.nextDouble();
-                    System.out.println("Momentum = " + momVel(momentum, momMass) + " kg m/s");
+                    System.out.println("Impulse(Ns) = ?");
+                    impulse = kb.nextDouble();
+                    System.out.println("Force(N) = ?");
+                    force = kb.nextDouble();
+                    System.out.println("Change in time " + divide(impulse, force) + " s");
                 }
             } else if (choice2 == 3) {
-
+                while (choice21 > 3 || choice21 < 1) {
+                    System.out.println("1: Kinetic Energy");
+                    System.out.println("2: Gravitational Potential Energy");
+                    System.out.println("3: Rest Energy");
+                    choice21 = kb.nextInt();
+                }
+                if (choice21 == 1) {
+                    while (choice210 > 3 || choice210 < 1) {
+                        System.out.println("Variable to be solved for:");
+                        System.out.println("1: Energy");
+                        System.out.println("2: Mass");
+                        System.out.println("3: Velocity");
+                        choice210 = kb.nextInt();
+                    }
+                    if (choice210 == 1) {
+                        System.out.println("Mass(kg) = ?");
+                        mass = kb.nextDouble();
+                        System.out.println("Velocity(m/s) = ?");
+                        vel = kb.nextDouble();
+                        System.out.println("Energy = " + kineticEnergy(mass, vel) + " J");
+                    } else if (choice210 == 2) {
+                        System.out.println("Energy(J) = ?");
+                        energy = kb.nextDouble();
+                        System.out.println("Velocity(m/s) = ?");
+                        vel = kb.nextDouble();
+                        System.out.println("Mass = " + kineticMass(energy, vel) + " kg");
+                    }else if (choice210 == 3){
+                        System.out.println("Energy(J) = ?");
+                        energy = kb.nextDouble();
+                        System.out.println("Mass(kg) = ?");
+                        mass = kb.nextDouble();
+                        System.out.println("Velocity = " + kineticVelocity(energy, mass) + " m/s");
+                    }
+                }
             }
         }
         if (choice == 3) {
@@ -195,37 +256,42 @@ public class PhysicsCalculator {
 
     /**
      *
-     * @param vel a double that represents velocity
-     * @param mass a double that represents mass
-     * @return a double that represents the momentum acquired by multiplying
-     * velocity by mass
+     * @param a a double that will be multiplied by b
+     * @param b a double that will be multiplied by a
+     * @return a double that represents a*b
      */
-    public static Double momentum(Double vel, Double mass) {
-        double momentum = vel * mass;
-        return momentum;
+    public static Double multiply(Double a, Double b) {
+        double c = a * b;
+        return c;
     }
 
     /**
      *
-     * @param mom a double that represents momentum
-     * @param mass a double that represents mass
-     * @return a double that represents velocity acquired by dividing momentum
-     * by mass
+     * @param a a double that will be divided by b
+     * @param b a double that will divide a
+     * @return a double that represents a/b
      */
-    public static Double momVel(Double mom, Double mass) {
-        Double vel = mom / mass;
-        return vel;
+    public static Double divide(Double a, Double b) {
+        Double c = a / b;
+        return c;
     }
 
-    /**
-     *
-     * @param mom
-     * @param vel a double that represents velocity
-     * @return a double that represents mass acquired by dividing momentum by
-     * velocity
-     */
-    public static Double momMass(Double mom, Double vel) {
-        Double mass = mom / vel;
-        return mass;
+    public static Double subtract(Double a, Double b) {
+        Double c = a - b;
+        return c;
+    }
+
+    public static Double kineticEnergy(Double m, Double v) {
+        Double E = 0.5 * m * (v * v);
+        return E;
+    }
+    public static Double kineticMass(Double E, Double v){
+        Double m = (2*E)/(v*v);
+        return m;
+    }
+    public static Double kineticVelocity(Double E, Double m){
+        Double v;
+        v = Math.sqrt((2*E)/m);
+        return v;
     }
 }

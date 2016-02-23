@@ -29,17 +29,101 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        jButton1.setText("Derive");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("ItalicC", 1, 40)); // NOI18N
+        jLabel1.setText("x");
+
+        jTextField11.setFont(new java.awt.Font("ItalicT", 0, 11)); // NOI18N
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
+
+        jTextField12.setFont(new java.awt.Font("ItalicC", 0, 11)); // NOI18N
+
+        jButton2.setFont(new java.awt.Font("Swis721 BlkCn BT", 0, 14)); // NOI18N
+        jButton2.setText("+");
+        jButton2.setBorder(null);
+
+        jLabel2.setFont(new java.awt.Font("ItalicC", 1, 35)); // NOI18N
+        jLabel2.setText("f(x)=");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(149, 149, 149)
+                .addComponent(jButton1)
+                .addContainerGap(281, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,46 +163,19 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        if (jTextField1.getText().equals("")){      //If there's nothing in the text fields,
-            jTextField1.setText("0");               //set them to 0
-        }
-        if (jTextField2.getText().equals("")){
-            jTextField2.setText("0");
-        }
-        if (jTextField3.getText().equals("")){
-            jTextField3.setText("0");
-        }
-        if (jTextField4.getText().equals("")){
-            jTextField4.setText("0");
-        }
-        if (jTextField5.getText().equals("")){
-            jTextField5.setText("0");
-        }
-        if (jTextField6.getText().equals("")){
-            jTextField6.setText("0");
-        }
-        if (jTextField7.getText().equals("")){
-            jTextField7.setText("0");
-        }
-        if (jTextField8.getText().equals("")){
-            jTextField8.setText("0");
-        }
-        if (jTextField9.getText().equals("")){
-            jTextField9.setText("0");
-        }
-        if (jTextField10.getText().equals("")){
-            jTextField10.setText("0");
-        }
-        int z = -10;
-        int a = 10;
-        Graphics g = jPanel1.getGraphics();
-        g.drawLine(260, 520, 260, 0);       //Draw axis
-        g.drawLine(0, 260, 520 , 260);      //
-        for (int i = 0; i < 520; i = i + 26){
-            g.drawLine (i, 255 , i ,265);   //Draw ticks
-            g.drawLine (255, i , 265, i);   //
-            g.drawString(String.valueOf(z),i-4,275);    //Draw numbers
-            g.drawString(String.valueOf(a),265,i+6);    //
+
+        int z = -6;
+        int a = 6;
+        Graphics g = jPanel2.getGraphics();
+        g.drawLine(150, 0, 150, 300);       //Draw axis
+        g.drawLine(0, 150, 300 , 150);      //
+        for (int i = 0; i < 520; i = i + 25){
+            g.drawLine (i, 145, i, 155);   //Draw ticks
+            g.drawLine (145, i , 155, i);   //
+            if(z != 0 || a != 0){
+                g.drawString(String.valueOf(z),i-4,165);    //Draw numbers
+                g.drawString(String.valueOf(a),155,i+6);    //
+            }
             z++;
             a--;
         }
@@ -153,39 +210,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
     
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        jPanel1.removeAll();        //Reset the jFrame
-        jPanel1.updateUI();         //
-        jTextField1.setText("0");   //Set all text fields to 0
-        jTextField2.setText("0");   //
-        jTextField3.setText("0");   //
-        jTextField4.setText("0");   //
-        jTextField5.setText("0");   //
-        jTextField6.setText("0");   //
-        jTextField7.setText("0");   //
-        jTextField8.setText("0");   //
-        jTextField9.setText("0");   //
-        jTextField10.setText("0");  //
+
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
     
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
@@ -197,5 +230,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
     // End of variables declaration//GEN-END:variables
 }
