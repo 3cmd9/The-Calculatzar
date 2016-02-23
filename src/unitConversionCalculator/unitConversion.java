@@ -24,6 +24,15 @@ public class unitConversion {
         int dUnit = read.nextInt();
         
         System.out.println(distanceConvert(dist, dUnit, cUnit));
+        
+        Scanner keyboard = new Scanner (System.in);
+    System.out.println("imput your value");
+    double imput = keyboard.nextDouble();
+    System.out.println("imput your imput type");
+    String imputType = keyboard.next();
+    System.out.println("imput your converted output type");
+    String outputType = keyboard.next();
+     
     }
 
     public static double distanceConvert(double dist, int dUnit, int cUnit) {
