@@ -27,7 +27,7 @@ public class unitConversion {
                 cc, cm       oz 9 ratio's
             area
                 cm, m, km,      inch, feet, yards, miles 49 ratio's
-        
+        /*
         Scanner read = new Scanner(System.in);
         
         System.out.println("cm[1], m[2], km[3], inch[4], feet[5], yards[6], miles[7]");
@@ -56,24 +56,7 @@ public class unitConversion {
      area
      cm, m, km,      inch, feet, yards, miles 49 ratio's
         
-     process
-     convert
-     add, sub, mult, divide
-    
-     output
-     designated unit
-            
-        
-    
-    
-    
-     braedon
-     distance
-    
-     nijet
-     metric to imperial
-    
-     will
+   
     
     
     
