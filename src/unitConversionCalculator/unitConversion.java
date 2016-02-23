@@ -12,15 +12,6 @@ import java.util.Scanner;
  * @author 066955667
  */
 public class unitConversion {
-
-    /*
-    // cm[1], m[2], km[3],      inch[4], feet[5], yards[6], miles[7]
-    public static double currencyConvert(double money, String currentCurrencyUnit, String desiredCurrencyUnit) {
-        double newMoney;
-
-        return newMoney;
-    }
-   */
     
     public static void main(String[] args) {
         
