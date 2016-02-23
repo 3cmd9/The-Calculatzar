@@ -5,6 +5,9 @@
  */
 package GraphingCalculator;
 
+import static GraphingCalculator.DerivativeCalc.coeff;
+import static GraphingCalculator.DerivativeCalc.exp;
+import static GraphingCalculator.DerivativeCalc.integralD;
 import java.awt.*;
 
 /**
@@ -163,7 +166,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-
+        
         int z = -6;
         int a = 6;
         Graphics g = jPanel2.getGraphics();
@@ -179,34 +182,19 @@ public class GUI extends javax.swing.JFrame {
             z++;
             a--;
         }
-        double x = -100;
+        double x = -150;
         double y;
-        double coef5 = (Double.valueOf(jTextField1.getText()));     //Get coefficients
-        double coef4 = (Double.valueOf(jTextField2.getText()));     //
-        double coef3 = (Double.valueOf(jTextField3.getText()));     //
-        double coef2 = (Double.valueOf(jTextField4.getText()));     //
-        double coef1 = (Double.valueOf(jTextField5.getText()));     //
-        double coef0 = (Double.valueOf(jTextField6.getText()));     //
-        double coefPowx = (Double.valueOf(jTextField7.getText()));  //
-        double coefSin = (Double.valueOf(jTextField8.getText()));   //
-        double coefCos = (Double.valueOf(jTextField9.getText()));   //
-        double coefTan = (Double.valueOf(jTextField10.getText()));  //
+        coeff[1] = (Double.valueOf(jTextField11.getText()));
+        exp[1] = (Double.valueOf(jTextField12.getText()));
         do {
-            y = (coefSin*Math.sin(x)) + (coefCos*Math.cos(x)) + (coefTan*Math.tan(x)) + (coef5*Math.pow(x,5)) +(coef4*Math.pow(x,4)) + (coef3*Math.pow(x,3)) + (coef2*Math.pow(x, 2)) + (coef1*x) + coef0;     //Equation for y
-            if (!jTextField7.getText().equals("0")){
-                if(coefPowx > 0){
-                    y = y + Math.pow(coefPowx,x);
-                }
-                else if(coefPowx < 0){
-                    y = y + -(Math.pow(-coefPowx,x));
-                }
-            }
+            y = coeff[1]*Math.pow(x,exp[1]);//Equation for y
             x = x + 0.001;
-            g.setColor(Color.black);
-            double drawx = (x+10)*26;
-            double drawy = (-y+10)*26;
+            g.setColor(Color.red);
+            double drawx = (x+6)*25;
+            double drawy = (-y+6)*25;
             g.fillRect((int)drawx, (int)drawy, 2, 2);        //Draw dot on coordinate
         }while (x <= 100);
+        
     }//GEN-LAST:event_jButton1MouseClicked
     
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
