@@ -11,6 +11,8 @@ import java.util.Scanner;
  *
  * @author 070101720
  */
+import java.util.Scanner;
+
 public class EssayCalculator {
 
     /**
@@ -103,17 +105,54 @@ public class EssayCalculator {
         String Letter = "";
         //Count Capital Letters and Lower Case Letters:
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String[] letters = alphabet.split("");
-        for (int i = 0; i < letters.length; i++) {
+        char[] letters = alphabet.toCharArray();
+        for (int i = 0; i < essay.length(); i++) {
             int HowMany = 0;
-            while (essay.indexOf(letters[i]) > 0) {
-                essay = essay.substring(0, essay.indexOf(letters[i]) - 1) + essay.substring(essay.indexOf(letters[i]) + 1);
-                HowMany = HowMany + 1;
-                System.out.println(essay);
+            for (int q = 0; q < letters.length; q++) {
+                if (essay.charAt(i) == letters[q]) {
+                    HowMany++;
+                }
             }
             if (HowMany != 0) {
                 Letter = Letter + letters[i] + ":" + HowMany + " ";
             }
+        }
+        System.out.println("There are: " + Letter);
+    }
+
+    public static void countingLower(String essay) {
+        String Letter = "";
+        //Count Capital Letters and Lower Case Letters:
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        char[] letters = alphabet.toCharArray();
+        for (int i = 0; i < essay.length(); i++) {
+            int HowMany = 0;
+            for (int a = 0; a < letters.length; a++) {
+                if (essay.charAt(i) == letters[a]) {
+                    HowMany++;
+                }
+            }
+            if (HowMany != 0) {
+                Letter = Letter + letters[i] + ":" + HowMany + " ";
+            }
+        }
+        System.out.println("There are: " + Letter);
+    }
+
+    public static void countingSpaces(String essay) {
+        String Letter = "";
+        //Count Capital Letters and Lower Case Letters:
+        String space = "\\s";
+        int HowMany = 0;
+
+        for (int i = 0; i < essay.length(); i++) {
+
+            if (String.valueOf(essay.charAt(i)).matches(space)) {
+                HowMany++;
+            }
+        }
+        if (HowMany != 0) {
+            System.out.println("There are: " + HowMany + " spaces in the essay");
         }
     }
 }
