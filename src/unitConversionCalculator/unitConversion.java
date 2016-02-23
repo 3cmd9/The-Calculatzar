@@ -23,7 +23,7 @@ public class unitConversion {
         int cUnit = read.nextInt();
         int dUnit = read.nextInt();
         
-        System.out.print(distanceConvert(dist, dUnit, cUnit));
+        System.out.println(distanceConvert(dist, dUnit, cUnit));
     }
 
     public static double distanceConvert(double dist, int dUnit, int cUnit) {
@@ -32,8 +32,8 @@ public class unitConversion {
         // int[] dUnit = new int[7];
         // everything is converted smallest first
              
-        int dif = dUnit - cUnit;
-        
+        int dif = cUnit - dUnit;
+        dist = dist * Math.pow(10,dif);
                 
         return dist;
     }
