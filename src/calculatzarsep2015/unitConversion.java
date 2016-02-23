@@ -80,8 +80,8 @@ public class unitConversion {
      */
 
     // cm[1], m[2], km[3],      inch[4], feet[5], yards[6], miles[7]
-
-    public static double distanceConvert(double dist, int desiredUnit, int currentUnit) {
+    }
+    public static double distanceConvert (double dist, int desiredUnit, int currentUnit) {
 
         // everything compared to cm first and inch first
         int[] dUnit = new int[7];
@@ -133,8 +133,8 @@ public class unitConversion {
 
         return dist;
     }
-}
-    */
+
+    
     
    
    
