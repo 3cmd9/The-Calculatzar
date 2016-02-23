@@ -46,13 +46,11 @@ public class financialCalculator {
                 double numOfComp = input.nextDouble();
                 double numOfYears = input.nextDouble();
                 System.out.println(compoundInterest(princiAmt, rate, numOfComp, numOfYears));
-
             }
         } else if (decision == 3) {
             // Jordans stuff goes here
         }
     }
-
     public static double simpleInterest(double princiAmt, double rate, double numOfYears) {
         double ammt = 0;
         rate = rate / 100;
