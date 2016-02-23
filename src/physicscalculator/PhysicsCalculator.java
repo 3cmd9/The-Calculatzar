@@ -120,11 +120,6 @@ public class PhysicsCalculator {
                         time2 = kb.nextDouble();
                         System.out.println("Impulse = " + multiply(force, subtract(time2, time1)) + " Ns");
                     }
-                    System.out.println("Mass(kg) = ?");
-                    momMass = kb.nextDouble();
-                    System.out.println("Velocity(m/s) = ?");
-                    momVel = kb.nextDouble();
-                    System.out.println("Momentum = " + multiply(momVel, momMass) + "kg m/s");
                 } else if (choice21 == 2) {
                     System.out.println("Momentum (kg m/s) = ?");
                     momentum = kb.nextDouble();
