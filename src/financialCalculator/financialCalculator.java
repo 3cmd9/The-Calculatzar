@@ -16,8 +16,8 @@ public class financialCalculator {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Greetings! Which type of finance can I help you with today?");
-        System.out.print("\n   Mortgage - 1\n   Interest - 2\n   No Idea - 3");
+        System.out.println("Greetings! Which type of finance can I help you with today? :3");
+        System.out.print("\n   Mortgage - 1\n   Interest - 2\n   No Idea - 3\n");
         int decision = input.nextInt();
         if (decision == 1) {
             System.out.print("\nWhat type of Mortgage?\nLoan Amount - "); //INPUT TYPE OF CALCULATION
@@ -25,7 +25,7 @@ public class financialCalculator {
             //all the data here...
 
         } else if (decision == 2) {
-            System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2");
+            System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2\n");
             int typeOfInter = input.nextInt();
             if (typeOfInter == 1) {
                 System.out.println("Please enter Principal Amount, Interest Rate, and the Number of Years");
