@@ -21,7 +21,8 @@ public class PhysicsCalculator {
         double force;
         double change;
         double time1;
-        double time2;
+        double time2 = 0;
+        double impulse;
         double v1;
         double v2;
         double a;
@@ -76,13 +77,13 @@ public class PhysicsCalculator {
                     momMass = kb.nextDouble();
                     System.out.println("Velocity(m/s) = ?");
                     momVel = kb.nextDouble();
-                    System.out.println("Momentum = " + multiply(momVel, momMass) + "kg m/s");
+                    System.out.println("Momentum = " + multiply(momVel, momMass) + " kg m/s");
                 } else if (choice21 == 2) {
                     System.out.println("Momentum (kg m/s) = ?");
                     momentum = kb.nextDouble();
                     System.out.println("Velocity(m/s) = ?");
                     momVel = kb.nextDouble();
-                    System.out.println("Velocity = " + divide(momentum, momVel) + "kg m/s");
+                    System.out.println("Velocity = " + divide(momentum, momVel) + " kg m/s");
                 } else if (choice21 == 3) {
                     System.out.println("Mass(kg) = ?");
                     momMass = kb.nextDouble();
@@ -116,22 +117,42 @@ public class PhysicsCalculator {
                         force = kb.nextDouble();
                         System.out.println("Time 1(s) = ?");
                         time1 = kb.nextDouble();
-                        System.out.println("Time 2(s) = ?");
-                        time2 = kb.nextDouble();
+                        while (time2 <= time1) {
+                            System.out.println("Time 2(s) = ?");
+                            time2 = kb.nextDouble();
+                        }
                         System.out.println("Impulse = " + multiply(force, subtract(time2, time1)) + " Ns");
                     }
                 } else if (choice21 == 2) {
-                    System.out.println("Momentum (kg m/s) = ?");
-                    momentum = kb.nextDouble();
-                    System.out.println("Velocity(m/s) = ?");
-                    momVel = kb.nextDouble();
-                    System.out.println("Velocity = " + divide(momentum, momVel) + "kg m/s");
+                    while (timeChoice > 2 || timeChoice < 1) {
+                        System.out.println("For time:");
+                        System.out.println("1. Has it been calulated");
+                        System.out.println("2. Do you need to find the difference in values");
+                        timeChoice = kb.nextInt();
+                    }
+                    if (timeChoice == 1) {
+                        System.out.println("Impulse(Ns) = ?");
+                        impulse = kb.nextDouble();
+                        System.out.println("Change in time(s) = ?");
+                        change = kb.nextDouble();
+                        System.out.println("Force = " + divide(impulse, change) + " N");
+                    } else if (timeChoice == 2) {
+                        System.out.println("Impulse(Ns) = ?");
+                        impulse = kb.nextDouble();
+                        System.out.println("Time 1(s) = ?");
+                        time1 = kb.nextDouble();
+                        while (time2 <= time1) {
+                            System.out.println("Time 2(s) = ?");
+                            time2 = kb.nextDouble();
+                        }
+                        System.out.println("Force = " + divide(impulse, subtract(time2, time1)) + " N");
+                    }
                 } else if (choice21 == 3) {
-                    System.out.println("Mass(kg) = ?");
-                    momMass = kb.nextDouble();
-                    System.out.println("Momentum (kg m/s) = ?");
-                    momentum = kb.nextDouble();
-                    System.out.println("Momentum = " + divide(momentum, momMass) + " kg m/s");
+                    System.out.println("Impulse(Ns) = ?");
+                    impulse = kb.nextDouble();
+                    System.out.println("Force(N) = ?");
+                    force = kb.nextDouble();
+                    System.out.println("Change in time " + divide(impulse, force) + " s");
                 }
             } else if (choice2 == 3) {
 
@@ -219,9 +240,9 @@ public class PhysicsCalculator {
         Double c = a / b;
         return c;
     }
-    
-    public static Double subtract(Double a, Double b){
-        Double c = a-b;
+
+    public static Double subtract(Double a, Double b) {
+        Double c = a - b;
         return c;
     }
 }
