@@ -43,6 +43,7 @@ public class DerivativeCalc {
         for (int j = 0; j < length; j++){
             exp[j] --;
             coeff[j] *= exp[j];
+            System.out.print(round(coeff[j]) + "x" + "^" + round(exp[j]) + " ");
         }
     }
     
