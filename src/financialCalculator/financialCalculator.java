@@ -20,10 +20,16 @@ public class financialCalculator {
         System.out.print("\n   Mortgage - 1\n   Interest - 2\n   No Idea - 3");
         int decision = input.nextInt();
         if (decision == 1) {
-            System.out.print("\nWhat type of Mortgage?\nLoan Amount - "); //INPUT TYPE OF CALCULATION
-            System.out.println("Please input -"); //INPUT REQUIRED INFORMATION
-            //all the data here...
-
+            System.out.print("Loan amount: ");
+            double loanAmount = input.nextDouble();
+            System.out.print("Number of payments per year: ");
+            int num = input.nextInt();
+            System.out.print("Number of years to repay loan: ");
+            int term = input.nextInt();
+            System.out.print("Fixed interest rate: ");
+            double rate = input.nextDouble();
+            
+            System.out.print("Your monthly payment is, " + mortgage(loanAmount, num, term, rate));
         } else if (decision == 2) {
             System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2");
             int typeOfInter = input.nextInt();
