@@ -40,14 +40,11 @@ public class unitConversion {
         // everything compared to cm first and inch first
         // int[] dUnit = new int[7];
         // everything is converted smallest first
-             
         int dif = cUnit - dUnit;
         dist = dist * Math.pow(10, dif);
 
         return dist;
     }
-
-    
 
     public static double convertMass(double imput, String imputType, String outputType) {
         /*
@@ -75,5 +72,51 @@ public class unitConversion {
 
         return output;
 
+    }
+        public static double timeconvert(String time1, String time2, double time) {
+
+        //take value given
+        //converting from cm to m or km
+   
+        double newtime = time;
+
+        
+
+            if (time2.equals("s")) {
+
+                newtime = newtime / 1000;
+            }
+
+            if (time2.equals("min")) {
+
+                newtime = newtime / 60000;
+            }
+
+            if (time2.equals("hours")) {
+
+                newtime = newtime / newtime;
+
+            }
+            
+
+            if (time2.equals("ms")) {
+
+                newtime = newtime * 1000;
+            }
+
+            if (time2.equals("min")) {
+
+                newtime = newtime / 60;
+            }
+
+            if (time2.equals("hours")) {
+
+                newtime = newtime / newtime;
+
+            }
+        
+
+        
+        return newtime;
     }
 }

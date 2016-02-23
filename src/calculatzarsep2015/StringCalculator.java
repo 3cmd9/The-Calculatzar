@@ -12,8 +12,9 @@ import java.util.*;
  * @author 341167849
  */
 public class StringCalculator {
-     public static void inputCount() {
-         Scanner reader = new Scanner(System.in);
+
+    public static void inputCount() {
+        Scanner reader = new Scanner(System.in);
         String data, searchWord;
         System.out.println("Please enter the info you which to analyze.");
         data = reader.nextLine();
@@ -69,9 +70,31 @@ public class StringCalculator {
             //if (!message[x].equalsIgnoreCase(x))
         }
     }
-     public static void main(String[] args) {
-        inputCount();
-     }
+
+    public static void main(String[] args) {
+        boolean looper = true;
+        int response;
+        String statement;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Hello! Welcome to our String Calculatar!");
+        while (looper == true) {
+            System.out.println("Please select which function you which to access. Enter the corresponding number.");
+            System.out.println("(1)Keyword Encryption | (2) Input Count | (3)ASCII Converter | (4) String Counter | (5) Camel Case");
+            response = input.nextInt();
+            if (response == 1) {
+                keyWordEncryption();
+            } else if (response == 2) {
+                inputCount();
+            } else if (response == 3) {
+                asciiConverter();
+            } else if (response == 4) {
+                characterCount();
+                vowelCount();
+            } else if (response == 5) {
+                camelCase();
+            }
+        }
+    }
 
     /**
      * Creates a string of all the ASCII values separated by a space each by
