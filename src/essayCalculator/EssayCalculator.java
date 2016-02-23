@@ -5,6 +5,8 @@
  */
 package essayCalculator;
 
+import java.util.Scanner;
+
 /**
  *
  * @author 070101720
@@ -13,6 +15,14 @@ import java.util.Scanner;
 
 public class EssayCalculator {
 
+    /**
+     * An input routine specifically for getting input with which to test the
+     * other methods in this class. Will be removed later, when these methods
+     * are being integrated into the main calculator.
+     *
+     * @author Erica Garand
+     * @param args
+     */
     public static void main(String[] args) {
         String input = "";
         StringBuilder essay = new StringBuilder();
@@ -28,9 +38,14 @@ public class EssayCalculator {
         } while (input.trim().equalsIgnoreCase("stop") == false);//end while
 
         input = essay.toString();
-		//the method will use the String called 'input' to do the thing. Ex. numberOfVowels(input);
+	//the method will use the String called 'input' to do the thing.
+        //Ex. numberOfVowels(input);
 
-        countingCaps(input);
+        //ERICA'S METHODS:
+        System.out.println("average word length: " + avgWordLength(input));
+        System.out.println("number of paragraphs: " + numberOfParagraphs(input));
+
+        //insert your method call here
     }
 
     /**
@@ -41,7 +56,7 @@ public class EssayCalculator {
      * @author Erica Garand
      * @param str the string containing the words to count the lengths of. Can
      * have multiple lines.
-     * @return the average word length as a double
+     * @return the average word length as a double.
      */
     public static double avgWordLength(String str) {
         //split string into an array, using a delimiter of any whitespace character. Remove all non alphabetical characters while splitting.
