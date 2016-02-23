@@ -96,14 +96,20 @@ public class StringCalculator {
     }
 
     /**
-     * Character count creates a variable equal to the length of the String,
-     * it's a very simple method
+     * Character count creates a variable equal to the amount of characters
+     * excluding spaces by cycling through the string
      *
      * @param statement contains string to be analyzed
-     * @return returns the amount of amount of characters in the string
+     * @return returns the amount of amount of non-space characters in the
+     * string
      */
     public static int characterCount(String statement) {
-        int cCount = statement.length();
+        int cCount = 0;
+        for (int i = 0; i < statement.length(); i++) {
+            if (statement.charAt(i) != ' ') {
+                cCount++;
+            }
+        }
         return cCount;
     }
 
