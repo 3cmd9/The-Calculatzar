@@ -39,7 +39,6 @@ public class DerivativeCalc {
             exp[i] ++;
             coeff[i] /= exp[i];
         }
-        coeff[input+1] = 0;
     }
         
 }
