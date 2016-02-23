@@ -71,7 +71,7 @@ public class financialCalculator {
      * @param numPayments The number of payments per year
      * @param loanTerm The number of years over which the money will be repaid
      * @param rate The annual interest rate
-     * @return
+     * @return  This returns the monthly payment value
      */
     public static double mortgage(double loanAmount, int numPayments, int loanTerm, double rate) {
         double payment;
