@@ -13,79 +13,22 @@ import java.util.Scanner;
  */
 public class unitConversion {
 
-
-  
-    /*
-    inputs
-        units of measurement(imperial and metric)
-            distance
-                cm, m, km,      inch, feet, yards, miles 49 ratio's
-            mass
-                g, kg,      pound 
-            volume
-                cc, cm       oz 9 ratio's
-            area
-                cm, m, km,      inch, feet, yards, miles 49 ratio's
-        
-        Scanner read = new Scanner(System.in);
-        
-        System.out.println("cm[1], m[2], km[3], inch[4], feet[5], yards[6], miles[7]");
-        System.out.println("Please give a distance, current unit and desired unit:");
-        double dist = read.nextDouble();
-        int currentUnit = read.nextInt();
-        int desiredUnit= read.nextInt();
-        
-        System.out.println((distanceConvert(dist, desiredUnit, currentUnit)));
-    }
-    /*
-     inputs
-     units of measurement(imperial and metric)
-     distance
-     cm, m, km,      inch, feet, yards, miles 49 ratio's
-    
-     */
-    /*
-     mass
-     g, kg,      pound, oz 16 ratio's
-    
-     volume
-     cc, cm       oz 9 ratio's
-    
-    
-     area
-     cm, m, km,      inch, feet, yards, miles 49 ratio's
-        
-     process
-     convert
-     add, sub, mult, divide
-    
-     output
-     designated unit
-            
-        
-    
-    
-    
-     braedon
-     distance
-    
-     nijet
-     metric to imperial
-    
-     will
-    
-    
-    
-     */
-
     // cm[1], m[2], km[3],      inch[4], feet[5], yards[6], miles[7]
     
     public static double distanceConvert(double dist, int desiredUnit, int currentUnit) {
 
         // everything compared to cm first and inch first
-        int[] dUnit = new int[7];
+        // int[] dUnit = new int[7];
         // everything is converted smallest first
-
+        Scanner read = new Scanner(System.in); 
+        
+        System.out.println("cm[1] - m[2] - km[3] - inch[4] - feet[5] - yards[6] - miles[7]");
+        System.out.println("Please give distance, current unit, and desired unit:");
+        double distance = read.nextDouble();
+        int cUnit = read.nextInt();
+        int dUnit = read.nextInt();
+        
+        
         // metric or imperial
         if (desiredUnit > 3) {
 
