@@ -76,4 +76,9 @@ public class financialCalculator {
 
         return payment;
     }
+
+    public static double futureValue(double presentValue, double interestRate, double numberOfYears) {
+        double FV = presentValue * Math.pow((1 + interestRate), numberOfYears);
+        return FV;
+    }
 }
