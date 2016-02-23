@@ -73,4 +73,50 @@ public class unitConversion {
         return output;
 
     }
+        public static double timeconvert(String time1, String time2, double time) {
+
+        //take value given
+        //converting from cm to m or km
+   
+        double newtime = time;
+
+        
+
+            if (time2.equals("s")) {
+
+                newtime = newtime / 1000;
+            }
+
+            if (time2.equals("min")) {
+
+                newtime = newtime / 60000;
+            }
+
+            if (time2.equals("hours")) {
+
+                newtime = newtime / newtime;
+
+            }
+            
+
+            if (time2.equals("ms")) {
+
+                newtime = newtime * 1000;
+            }
+
+            if (time2.equals("min")) {
+
+                newtime = newtime / 60;
+            }
+
+            if (time2.equals("hours")) {
+
+                newtime = newtime / newtime;
+
+            }
+        
+
+        
+        return newtime;
+    }
 }
