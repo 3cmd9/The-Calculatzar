@@ -12,27 +12,27 @@ import java.util.Scanner;
  * @author 066955667
  */
 public class unitConversion {
-    
+
     public static void main(String[] args) {
-        
+
         Scanner read = new Scanner(System.in);
-        
+
         System.out.println("milli[1] - centi[2] - deci[3] - meter[4] - deka[5] - hecto[6] - kilo[7]");
         System.out.println("Please give distance, current unit, and desired unit:");
         double dist = read.nextDouble();
         int cUnit = read.nextInt();
         int dUnit = read.nextInt();
-        
+
         System.out.println(distanceConvert(dist, dUnit, cUnit));
-        
-        Scanner keyboard = new Scanner (System.in);
-    System.out.println("imput your value");
-    double imput = keyboard.nextDouble();
-    System.out.println("imput your imput type");
-    String imputType = keyboard.next();
-    System.out.println("imput your converted output type");
-    String outputType = keyboard.next();
-     
+
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("imput your value");
+        double imput = keyboard.nextDouble();
+        System.out.println("imput your imput type");
+        String imputType = keyboard.next();
+        System.out.println("imput your converted output type");
+        String outputType = keyboard.next();
+
     }
 
     public static double distanceConvert(double dist, int dUnit, int cUnit) {
@@ -40,14 +40,11 @@ public class unitConversion {
         // everything compared to cm first and inch first
         // int[] dUnit = new int[7];
         // everything is converted smallest first
-             
         int dif = cUnit - dUnit;
-        dist = dist * Math.pow(10,dif);
-                
+        dist = dist * Math.pow(10, dif);
+
         return dist;
     }
-
-    
 
     public static double convertMass(double imput, String imputType, String outputType) {
         /*
