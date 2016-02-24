@@ -5,7 +5,7 @@
  */
 package calculatzarsep2015;
 
-import java.util.Scanner;
+import java.util.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,19 +18,45 @@ import java.util.Scanner;
  */
 public class StringCalculator {
 
-    /**
-     *
-     * @return
-     */
-    public static String keyWordEncryption() {
-        // y%keyWord[x].length
-        //ATTENTION PLS - the problem when using 2 keywords is that when encrypting for the second time it is reset with new shifts instead of being added ontop.
-        //POSSIBL SOLUTION TO IMPLEMENT - before any loops set encoded to = message, and when you do shift, add the values on as opposed to reseting values
+    public static void inputCount() {
+        Scanner reader = new Scanner(System.in);
+        String data, searchWord;
+        System.out.println("Please enter the info you which to analyze.");
+        data = reader.nextLine();
+        System.out.println("Please enter the keyword to search for.");
+        searchWord = reader.next().toLowerCase();
+        String tempWord = "", capWord;
+        int occurenceCount = 0;
+        capWord = searchWord.substring(0, 1).toUpperCase() + searchWord.substring(1, searchWord.length());
+        for (int i = 0; i < data.length(); i++) {
+            if (data.charAt(i) == ' ' || data.charAt(i) == ',' || data.charAt(i) == '.' || data.charAt(i) == '?' || data.charAt(i) == '!') {
+                if (tempWord.equals(searchWord) || tempWord.equals(capWord) || tempWord.equals(searchWord.toUpperCase())) {
+                    occurenceCount++;
+                }
+                tempWord = "";
+                continue;
+            }
+            tempWord = tempWord + data.charAt(i);
+            if (i == data.length() - 1) {
+                if (tempWord.equals(searchWord) || tempWord.equals(capWord) || tempWord.equals(searchWord.toUpperCase())) {
+                    occurenceCount++;
+                }
+            }
+        }
+        System.out.println("The keyword(" + searchWord + ") appears " + occurenceCount + " time(s).");
+    }
+
+    public static void keyWordEncryption() { //should it instead be keywords and non keywords entered separately?
+
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Please input the number of keywords");
         int numKeyWords = scan.nextInt(); //holds the number of key words the user intends to use
         String[] keyWords = new String[numKeyWords]; //stores every keyword
+        System.out.println("Please input the number of total words in the message (keywords and non-keywords)");
+        int numWords = scan.nextInt(); //stores the total number of words to be in the sentence
+        String[] message = new String[numWords]; //stores the words of the message including keywords to be encoded
+        String[] nonKeyWords = new String[numWords - numKeyWords]; //stores all the words to be encoded
 
         System.out.println("Please input the keywords");
         //gets keywords
@@ -98,107 +124,122 @@ public class StringCalculator {
         return encryption;
     }
 
-    /**
-     * this cipher takes the inputted phrase and encrypts it so that each new
-     * character is a result of the characters to the left and right of its
-     * correspondant in the entered message
-     *
-     * @return returns the encrypted message
-     */
-    public static String samplerCipher() {
-
-        Scanner scan = new Scanner(System.in);
-        String phrase = ""; //stores the phrase entered by the user
-        String encoded = ""; //stores the encrypted phrase
-
-        System.out.println("Please enter your phrase: ");
-        phrase = scan.nextLine();
-        char[] codedWord = new char[2 * phrase.length()]; //stores the current encrypted phrase, which can be manipulated and eventually turned into a string
-
-        for (int x = 0; x < phrase.length(); x++) {
-            if ((x - 1) >= 0 && (x + 1) < phrase.length()) {
-                encoded += phrase.charAt(x - 1);
-                encoded += phrase.charAt(x + 1);
-            } else if ((x - 1) < 0) {
-                encoded += phrase.charAt(x + 1);
-            } else if ((x + 1) >= phrase.length()) {
-                encoded += phrase.charAt(x - 1);
+    public static void main(String[] args) {
+        boolean looper = true;
+        int response;
+        String statement;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Hello! Welcome to our String Calculatar!");
+        while (looper == true) {
+            System.out.println("Please select which function you which to access. Enter the corresponding number.");
+            System.out.println("(1)Keyword Encryption | (2) Input Count | (3)ASCII Converter | (4) String Counter | (5) Camel Case");
+            response = input.nextInt();
+            if (response == 1) {
+                keyWordEncryption();
+            } else if (response == 2) {
+                inputCount();
+            } else if (response == 3) {
+                asciiConverter();
+            } else if (response == 4) {
+                characterCount();
+                vowelCount();
+            } else if (response == 5) {
+                camelCase();
             }
         }
-
-        return encoded;
     }
 
     /**
+     * Creates a string of all the ASCII values separated by a space each by
+     * using a for loop
      *
-     * @return
+     * @param statement a string with all the characters to be converted into
+     * ASCII values
+     * @return returns a string which contains every single ASCII value (in
+     * decimal) to be read out in other methods
      */
-    public static String largestNum() {
-
-        String encryption = ""; //holds the encrypted string
-        Scanner scan = new Scanner(System.in);
-        char[] largestChar = new char[26]; //stores when a character occurs, so the largest one can be determined
-        char largestCharacter = 'a'; //stores the largest char
-        int atChar = 0; //stores where in the index of the array something is stored
-        int shift = 0; //determines how much the letters of the message will be shifted through the alphabet by
-
-        System.out.println("Please enter your message: ");
-        String message = scan.nextLine();
-        char[] codedWord = new char[message.length()]; //creates a character array to be more easily manipulated when encrypting
-
-        for (int x = 0; x < message.length(); x++) {
-            if (message.charAt(x) >= 65 && message.charAt(x) <= 90) {
-                atChar = message.charAt(x) - 65;
-                largestChar[atChar] = 1;
-            } else if (message.charAt(x) >= 97 && message.charAt(x) <= 122) {
-                atChar = message.charAt(x) - 97;
-                largestChar[atChar] = 1;
-            }
+    public static String asciiConverter(String statement) {
+        String output = "";
+        String ascii[] = new String[statement.length()];
+        for (int i = 0; i < statement.length(); i++) {
+            ascii[i] = ((int) (statement.charAt(i)) + " ");
+            output = output + ascii[i];
         }
+        return output;
 
-        for (int x = 0; x < largestChar.length; x++) {
-            if (largestChar[x] > 0) {
-                largestCharacter = (char) (x + 65);
-            }
-        }
-
-        //sets shift value to a number within the range of the alphabet
-        shift = largestCharacter - 65;
-
-        //assigns the text of message to the char array codedWord
-        for (int x = 0; x < message.length(); x++) {
-            codedWord[x] = message.charAt(x);
-        }
-
-        for (int x = 0; x < message.length(); x++) {
-            //This if statement handles the character if it is upper case
-            if (codedWord[x] >= 65 && codedWord[x] <= 90) {
-                codedWord[x] = (char) (codedWord[x] + shift);
-                if (codedWord[x] > 90) {
-                    codedWord[x] = (char) ((codedWord[x] - 90) + 64);
-                } else if (codedWord[x] < 65) {
-                    codedWord[x] = (char) (91 - (65 - codedWord[x]));
-                }
-                //else if to handle if the character is lower case    
-            } else if (codedWord[x] >= 97 && codedWord[x] <= 122) {
-                codedWord[x] = (char) (codedWord[x] + shift);
-                if (codedWord[x] > 122) {
-                    codedWord[x] = (char) ((codedWord[x] - 122) + 96);
-                } else if (codedWord[x] < 97) {
-                    codedWord[x] = (char) (123 - (97 - codedWord[x]));
-                }
-            }
-        }
-
-        for (int x = 0; x < codedWord.length; x++) {
-            encryption = encryption + codedWord[x];
-        }
-
-        return encryption;
     }
 
     /**
+     * Character count creates a variable equal to the amount of characters
+     * excluding spaces by cycling through the string
      *
-     * @param args
+     * @param statement contains string to be analyzed
+     * @return returns the amount of amount of non-space characters in the
+     * string
      */
+    public static int characterCount(String statement) {
+        int cCount = 0;
+        for (int i = 0; i < statement.length(); i++) {
+            if (statement.charAt(i) != ' ') {
+                cCount++;
+            }
+        }
+        return cCount;
+    }
+
+    /**
+     * vowelCount counts the amount of vowels in a string one character at a
+     * time and then returns the amount of vowels which occur
+     *
+     * @param statement takes the statement to have the vowels counted
+     * @return returns an integer equal to the amount of vowels that occur in
+     * the string
+     */
+    public static int vowelCount(String statement) {
+        int vCount = 0;
+        statement = statement.toUpperCase();
+        for (int i = 0; i < statement.length(); i++) {
+            if (statement.charAt(i) == 'A' || statement.charAt(i) == 'E' || statement.charAt(i) == 'I' || statement.charAt(i) == 'O' || statement.charAt(i) == 'U' || statement.charAt(i) == 'Y') {
+                vCount++;
+            }
+        }
+        return vCount;
+    }
+
+    /**
+     * This converts sentences into camel case and will attempt to ignore extra
+     * spaces, but leave in punctuation and numbers
+     *
+     * @param statement takes in the statement that is requested to be converted
+     * @return returns a String which is the converted sentence
+     */
+    public static String camelCase(String statement) {
+        boolean prevSpace = false;
+        //boolean to check if the previous character was a space to indicate a new word
+        int offset = 0;
+        //offset increases by 1 for each space since null characters are converted into spaces
+        char[] camel = new char[statement.length()];
+        statement = statement.toLowerCase();
+        //convert statement into lower case to make the transition easier
+        for (int i = 0; i < statement.length(); i++) {
+            if (statement.charAt(i) == ' ') {
+                prevSpace = true;
+                offset++;
+                continue;
+                //if there is more than one space it will keep going until it hits an actual letter
+            }
+            if (prevSpace) {
+                if (statement.charAt(i) < 97 || statement.charAt(i) > 122) {
+                    camel[i - offset] = statement.charAt(i);
+                    continue;
+                }
+                camel[i - offset] = (char) ((int) statement.charAt(i) - 32);
+                prevSpace = false;
+                continue;
+            }
+            camel[i - offset] = statement.charAt(i);
+        }
+        String camelCase = new String(camel);
+        return camelCase;
+    }
 }
