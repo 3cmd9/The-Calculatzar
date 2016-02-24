@@ -8,10 +8,9 @@ import java.util.*;
  * and open the template in the editor.
  */
 /**
- * provides a menu to allow the user to choose between various string related
- * methods, until the user wishes to exit
+ *gg
  *
- * @author Haydn,Len & Ari
+ * @author Haydn,Len and Ari
  */
 public class StringCalculator {
 
@@ -49,9 +48,15 @@ public class StringCalculator {
 
     /**
      * accepts the number of keywords, the keywords themselves, and the message
-     * to be encrypted from the user. The value that the character 
+     * to be encrypted from the user. The value that the character will be
+     * shifted by is determined by finding out which character of the message
+     * corresponds to which character of the current key word the loop is on.
+     * The current keyword is repeated for the entire length of the string. The
+     * number of times the message is encrypted is the number of keywords, and
+     * each time, the current message/encryption is encrypted by the keyword
+     * being used.
      *
-     * @return
+     * @return returns the encrypted message
      */
     public static String keyWordEncryption() { //should it instead be keywords and non keywords entered separately?
 
@@ -78,7 +83,7 @@ public class StringCalculator {
         String encryption = ""; //stores the final encrypted message as a string
         int shift = 0; //stores the value to shift the characters by
         int keyWordInString; //stores the number of times the keyword being used fits into the message
-        int atChar = 0; //used in charAt when determining the shift value after a key word has been repeated
+        int atChar; //used in charAt when determining the shift value after a key word has been repeated
         boolean shouldBreak = false; //stores wether a second for loop should be broken out of
 
         for (int x = 0; x < message.length; x++) {
@@ -224,8 +229,8 @@ public class StringCalculator {
 
     /**
      * this cipher takes the inputted phrase and encrypts it so that each new
-     * character is a result of the characters to the left and right of its
-     * correspondant in the entered message
+     * character is the characters to the left and right of its correspondent in
+     * the entered message
      *
      * @return returns the encrypted message
      */
@@ -239,6 +244,7 @@ public class StringCalculator {
         phrase = scan.nextLine();
         char[] codedWord = new char[2 * phrase.length()]; //stores the current encrypted phrase, which can be manipulated and eventually turned into a string
 
+        //adds the previous and next characters to the encrypted word, unless the current position is first or last in the message, then the next or previous characters (respectively) are added 
         for (int x = 0; x < phrase.length(); x++) {
             if ((x - 1) >= 0 && (x + 1) < phrase.length()) {
                 encoded += phrase.charAt(x - 1);
@@ -254,8 +260,11 @@ public class StringCalculator {
     }
 
     /**
+     * Determines the largest value letter in a string (z is greater than a). Then the index in
+     * the alphabet of that letter becomes the value which the message is
+     * shifted by
      *
-     * @return
+     * @return returns the encrypted message
      */
     public static String largestNum() {
 
@@ -270,6 +279,7 @@ public class StringCalculator {
         String message = scan.nextLine();
         char[] codedWord = new char[message.length()]; //creates a character array to be more easily manipulated when encrypting
 
+        //when a letter occurs, its index in an array representing the alphabet is set to one. 
         for (int x = 0; x < message.length(); x++) {
             if (message.charAt(x) >= 65 && message.charAt(x) <= 90) {
                 atChar = message.charAt(x) - 65;
@@ -280,6 +290,7 @@ public class StringCalculator {
             }
         }
 
+        //determines the last (largest) letter to have a one in its index (to have occured in the string)
         for (int x = 0; x < largestChar.length; x++) {
             if (largestChar[x] > 0) {
                 largestCharacter = (char) (x + 65);
@@ -294,6 +305,7 @@ public class StringCalculator {
             codedWord[x] = message.charAt(x);
         }
 
+        //encodes the message
         for (int x = 0; x < message.length(); x++) {
             //This if statement handles the character if it is upper case
             if (codedWord[x] >= 65 && codedWord[x] <= 90) {
@@ -322,13 +334,14 @@ public class StringCalculator {
     }
 
     /**
+     * provides a menu to allow the user to choose between various string
+     * related methods, until the user wishes to exit
      *
      * @param args
      */
     public static void main(String[] args) {
         boolean looper = true;
         int response;
-        String statement;
         Scanner input = new Scanner(System.in);
         System.out.println("Hello! Welcome to our String Calculatar!");
         while (looper == true) {
