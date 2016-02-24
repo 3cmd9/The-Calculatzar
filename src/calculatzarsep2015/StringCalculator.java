@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculatzarsep2015;
 
 import java.util.*;
@@ -13,31 +8,37 @@ import java.util.*;
  * and open the template in the editor.
  */
 /**
+ * provides a menu to allow the user to choose between various string related
+ * methods, until the user wishes to exit
  *
- * @author Haydn
+ * @author Haydn,Len & Ari
  */
 public class StringCalculator {
 
+    /**
+     * gets user input for data to analyze and a keyword. The method will then
+     * look for the number of occurrences of that keyword within the data
+     */
     public static void inputCount() {
         Scanner reader = new Scanner(System.in);
-        String data, searchWord;
+        String data, searchWord; //String variables to store the inputs for the data to analyze and the keyword to search for
         System.out.println("Please enter the info you which to analyze.");
         data = reader.nextLine();
         System.out.println("Please enter the keyword to search for.");
         searchWord = reader.next().toLowerCase();
-        String tempWord = "", capWord;
-        int occurenceCount = 0;
-        capWord = searchWord.substring(0, 1).toUpperCase() + searchWord.substring(1, searchWord.length());
-        for (int i = 0; i < data.length(); i++) {
-            if (data.charAt(i) == ' ' || data.charAt(i) == ',' || data.charAt(i) == '.' || data.charAt(i) == '?' || data.charAt(i) == '!') {
-                if (tempWord.equals(searchWord) || tempWord.equals(capWord) || tempWord.equals(searchWord.toUpperCase())) {
+        String tempWord = "", capWord; //String variables to a store temporary word and a captial version of the temp word
+        int occurenceCount = 0; //Integer vriable to store the number of occurences of the keyword
+        capWord = searchWord.substring(0, 1).toUpperCase() + searchWord.substring(1, searchWord.length()); //captializes the first character in capword
+        for (int i = 0; i < data.length(); i++) { //Loops the length of the data check for how many times the keyword occurs
+            if (data.charAt(i) == ' ' || data.charAt(i) == ',' || data.charAt(i) == '.' || data.charAt(i) == '?' || data.charAt(i) == '!') { //selection statements to determine when to don a wordcheck
+                if (tempWord.equals(searchWord) || tempWord.equals(capWord) || tempWord.equals(searchWord.toUpperCase())) { //Word check if statement to see if the temp word matches the keyword
                     occurenceCount++;
                 }
                 tempWord = "";
                 continue;
             }
             tempWord = tempWord + data.charAt(i);
-            if (i == data.length() - 1) {
+            if (i == data.length() - 1) {                                       //if statement for the word check on the last word.
                 if (tempWord.equals(searchWord) || tempWord.equals(capWord) || tempWord.equals(searchWord.toUpperCase())) {
                     occurenceCount++;
                 }
@@ -46,17 +47,19 @@ public class StringCalculator {
         System.out.println("The keyword(" + searchWord + ") appears " + occurenceCount + " time(s).");
     }
 
-    public static void keyWordEncryption() { //should it instead be keywords and non keywords entered separately?
+    /**
+     * accepts the number of keywords, the keywords themselves, and the message
+     * to be encrypted from the user. The value that the character 
+     *
+     * @return
+     */
+    public static String keyWordEncryption() { //should it instead be keywords and non keywords entered separately?
 
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Please input the number of keywords");
         int numKeyWords = scan.nextInt(); //holds the number of key words the user intends to use
         String[] keyWords = new String[numKeyWords]; //stores every keyword
-        System.out.println("Please input the number of total words in the message (keywords and non-keywords)");
-        int numWords = scan.nextInt(); //stores the total number of words to be in the sentence
-        String[] message = new String[numWords]; //stores the words of the message including keywords to be encoded
-        String[] nonKeyWords = new String[numWords - numKeyWords]; //stores all the words to be encoded
 
         System.out.println("Please input the keywords");
         //gets keywords
@@ -87,6 +90,7 @@ public class StringCalculator {
             keyWordInString = message.length / keyWords[x].length();
             for (int y = 0; y < message.length; y++) {
 
+                //determines what the shift value should be based on the current character in the current key word
                 atChar = y % keyWords[x].length();
                 if (keyWords[x].charAt(atChar) >= 65 && keyWords[x].charAt(atChar) <= 90) {
                     shift = keyWords[x].charAt(atChar);
@@ -97,7 +101,7 @@ public class StringCalculator {
                 }
 
                 //shifts the message
-                //handles the char if its upper case
+                //handles the char if its upper case, makes sure the character is cahnged if its out of bounds
                 if (message[y] >= 65 && message[y] <= 90) {
                     encoded[y] += (char) shift;
                     if (encoded[y] > 90) {
@@ -105,7 +109,7 @@ public class StringCalculator {
                     } else if (encoded[y] < 65) {
                         encoded[y] = (char) (91 - (65 - encoded[y]));
                     }
-                } //handles the char if its lower case
+                } //handles the char if its lower case, makes sure the character is cahnged if its out of bounds
                 else if (message[y] >= 97 && message[y] <= 122) {
                     encoded[y] += (char) shift;
                     if (encoded[y] > 122) {
@@ -122,31 +126,6 @@ public class StringCalculator {
         }
 
         return encryption;
-    }
-
-    public static void main(String[] args) {
-        boolean looper = true;
-        int response;
-        String statement;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Hello! Welcome to our String Calculatar!");
-        while (looper == true) {
-            System.out.println("Please select which function you which to access. Enter the corresponding number.");
-            System.out.println("(1)Keyword Encryption | (2) Input Count | (3)ASCII Converter | (4) String Counter | (5) Camel Case");
-            response = input.nextInt();
-            if (response == 1) {
-                keyWordEncryption();
-            } else if (response == 2) {
-                inputCount();
-            } else if (response == 3) {
-                asciiConverter();
-            } else if (response == 4) {
-                characterCount();
-                vowelCount();
-            } else if (response == 5) {
-                camelCase();
-            }
-        }
     }
 
     /**
@@ -242,4 +221,153 @@ public class StringCalculator {
         String camelCase = new String(camel);
         return camelCase;
     }
+
+    /**
+     * this cipher takes the inputted phrase and encrypts it so that each new
+     * character is a result of the characters to the left and right of its
+     * correspondant in the entered message
+     *
+     * @return returns the encrypted message
+     */
+    public static String samplerCipher() {
+
+        Scanner scan = new Scanner(System.in);
+        String phrase = ""; //stores the phrase entered by the user
+        String encoded = ""; //stores the encrypted phrase
+
+        System.out.println("Please enter your phrase: ");
+        phrase = scan.nextLine();
+        char[] codedWord = new char[2 * phrase.length()]; //stores the current encrypted phrase, which can be manipulated and eventually turned into a string
+
+        for (int x = 0; x < phrase.length(); x++) {
+            if ((x - 1) >= 0 && (x + 1) < phrase.length()) {
+                encoded += phrase.charAt(x - 1);
+                encoded += phrase.charAt(x + 1);
+            } else if ((x - 1) < 0) {
+                encoded += phrase.charAt(x + 1);
+            } else if ((x + 1) >= phrase.length()) {
+                encoded += phrase.charAt(x - 1);
+            }
+        }
+
+        return encoded;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static String largestNum() {
+
+        String encryption = ""; //holds the encrypted string
+        Scanner scan = new Scanner(System.in);
+        char[] largestChar = new char[26]; //stores when a character occurs, so the largest one can be determined
+        char largestCharacter = 'a'; //stores the largest char
+        int atChar = 0; //stores where in the index of the array something is stored
+        int shift = 0; //determines how much the letters of the message will be shifted through the alphabet by
+
+        System.out.println("Please enter your message: ");
+        String message = scan.nextLine();
+        char[] codedWord = new char[message.length()]; //creates a character array to be more easily manipulated when encrypting
+
+        for (int x = 0; x < message.length(); x++) {
+            if (message.charAt(x) >= 65 && message.charAt(x) <= 90) {
+                atChar = message.charAt(x) - 65;
+                largestChar[atChar] = 1;
+            } else if (message.charAt(x) >= 97 && message.charAt(x) <= 122) {
+                atChar = message.charAt(x) - 97;
+                largestChar[atChar] = 1;
+            }
+        }
+
+        for (int x = 0; x < largestChar.length; x++) {
+            if (largestChar[x] > 0) {
+                largestCharacter = (char) (x + 65);
+            }
+        }
+
+        //sets shift value to a number within the range of the alphabet
+        shift = largestCharacter - 65;
+
+        //assigns the text of message to the char array codedWord
+        for (int x = 0; x < message.length(); x++) {
+            codedWord[x] = message.charAt(x);
+        }
+
+        for (int x = 0; x < message.length(); x++) {
+            //This if statement handles the character if it is upper case
+            if (codedWord[x] >= 65 && codedWord[x] <= 90) {
+                codedWord[x] = (char) (codedWord[x] + shift);
+                if (codedWord[x] > 90) {
+                    codedWord[x] = (char) ((codedWord[x] - 90) + 64);
+                } else if (codedWord[x] < 65) {
+                    codedWord[x] = (char) (91 - (65 - codedWord[x]));
+                }
+                //else if to handle if the character is lower case    
+            } else if (codedWord[x] >= 97 && codedWord[x] <= 122) {
+                codedWord[x] = (char) (codedWord[x] + shift);
+                if (codedWord[x] > 122) {
+                    codedWord[x] = (char) ((codedWord[x] - 122) + 96);
+                } else if (codedWord[x] < 97) {
+                    codedWord[x] = (char) (123 - (97 - codedWord[x]));
+                }
+            }
+        }
+
+        for (int x = 0; x < codedWord.length; x++) {
+            encryption = encryption + codedWord[x];
+        }
+
+        return encryption;
+    }
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        boolean looper = true;
+        int response;
+        String statement;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Hello! Welcome to our String Calculatar!");
+        while (looper == true) {
+            System.out.println("Please select which function you wish to access. Enter the corresponding number. Enter something not listed to stop");
+            System.out.println("(1)Keyword Encryption | (2) Input Count | (3)ASCII Converter | (4) String Counter | (5) Camel Case | (6) sampler Cipher | (7) Largest number Cipher");
+            response = input.nextInt();
+            if (response < 1 || response > 7) {
+                break;
+            }
+            String empty = input.nextLine(); //used to absorb the fault of the following nextLines
+
+            if (response == 1) {
+                System.out.println(keyWordEncryption());
+            } else if (response == 2) {
+                inputCount();
+            } else if (response == 3) {
+                System.out.println("Please enter a statement to be processed:");
+                String entry = input.nextLine();
+                System.out.println("Processing...");
+                System.out.println(asciiConverter(entry));
+            } else if (response == 4) {
+                System.out.println("Please enter a statement to be processed:");
+                String entry = input.nextLine();
+                System.out.println("Processing...");
+                System.out.print("Characters: ");
+                System.out.println(characterCount(entry));
+                System.out.print("Vowels: ");
+                System.out.println(vowelCount(entry));
+            } else if (response == 5) {
+                System.out.println("Please enter a statement to be processed:");
+                String entry = input.nextLine();
+                System.out.println("Processing...");
+                System.out.println(camelCase(entry));
+            } else if (response == 6) {
+                System.out.println(samplerCipher());
+            } else if (response == 7) {
+                System.out.println(largestNum());
+            }
+        }
+    }
+
 }
