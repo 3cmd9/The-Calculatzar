@@ -11,7 +11,7 @@ package GraphingCalculator;
  */
 public class TangentLine {
     
-    public static double findYAtX(int[] power, int[] coef, int x){
+    public static double findYAtX(double[] power, double[] coef, double x){
         double y = 0;
         for (int i = 0; i <= power.length-1; i++){
             y += coef[i]*(Math.pow((x), power[i]));
@@ -19,7 +19,7 @@ public class TangentLine {
         return y;
     }
     
-    public static double findSlopeOfFunction(int[] power, int[] coef, int x, int y){
+    public static double findSlopeOfFunction(double[] power, double[] coef, double x){
         return Math.pow((coef[0] * x), power[0]);
     }
     

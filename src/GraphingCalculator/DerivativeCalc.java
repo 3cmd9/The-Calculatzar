@@ -14,13 +14,13 @@ import java.math.RoundingMode;
  */
 public class DerivativeCalc {
     
-    public final static int input = 1;
-    public final static int length = input + 1;
+    public static int input = 1;
+    public static int length = input + 1;
     public final static int x = 4;
     public final static int y = 4;
     public static double c = 0;
-    public static double [] coeff = new double[length];
-    public static double[] exp = new double[length];
+    public static double [] coeff = new double[4];
+    public static double[] exp = new double[4];
     
     /**
      * @param args the command line arguments
@@ -38,11 +38,12 @@ public class DerivativeCalc {
         }
         integralD();
     }
+
     
     public static void coefficientD(){
-        for (int j = 0; j < length; j++){
-            exp[j] --;
+        for (int j = 0; j < 4; j++){
             coeff[j] *= exp[j];
+            exp[j] --;
             System.out.print(round(coeff[j]) + "x" + "^" + round(exp[j]) + " ");
         }
     }
