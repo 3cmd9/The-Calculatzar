@@ -10,28 +10,32 @@ import java.util.Scanner;
 
 /**
  *
- * @author Gavin Christie, Carter Ford and Jordan Hurley (Sort of)
+ * @author Gavin Christie, Carter Ford and Jordan Hurley (leader of the group)
  */
 public class financialCalculator {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("#.##");
 
-        System.out.println("Greetings! Which type of finance can I help you with today? :3");
-        System.out.print("\n   Mortgage - 1\n   Interest - 2\n   No Idea - 3\n");
+        System.out.println("Greetings! Which type of finance can I help you with today?");
+        System.out.print("\n   Mortgage - 1\n   Interest - 2\n   Value - 3\n");
         int decision = input.nextInt();
+        // To calculate the monthly payment of a mortgage
         if (decision == 1) {
             System.out.print("Loan amount: ");
-            double loanAmount = input.nextDouble();
+            double loanAmount = input.nextDouble(); // Value in dollars of the loan
             System.out.print("Number of payments per year: ");
-            int num = input.nextInt();
+            int num = input.nextInt();   // Number of payments made in one year
             System.out.print("Number of years to repay loan: ");
-            int term = input.nextInt();
+            int term = input.nextInt(); // How many years the loan is to be payed off in
             System.out.print("Fixed interest rate: ");
             double rate = input.nextDouble();
+
+            System.out.print("Your monthly payment is, "
+                    + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
             
-            DecimalFormat df = new DecimalFormat("#.##");
-            
+            // Outputing the monthly bill
             System.out.print("Your monthly payment is, " + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
         } else if (decision == 2) {
             System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2\n");
@@ -51,9 +55,32 @@ public class financialCalculator {
                 System.out.println(compoundInterest(princiAmt, rate, numOfComp, numOfYears));
             }
         } else if (decision == 3) {
-            // Jordans stuff goes here
+            System.out.println("Would you like to determine future or present value? ");
+            String answer = input.nextLine();
+            answer = answer.toUpperCase();
+            if (answer.equals("FUTURE")) {
+                System.out.println("Thank you for selecting the future value calculator."
+                        + " Please enter your present value. ");
+                double presentValue = input.nextDouble();
+                System.out.println("Please enter your interest rate. ");
+                double interestRate = input.nextDouble();
+                System.out.println("Finally enter the desired time period. ");
+                double numberOfYears = input.nextDouble();
+                System.out.println("Your future value is"
+                        + df.format(futureValue(presentValue, interestRate, numberOfYears)));
+            }
         }
     }
+
+    /**
+     * Calculates the final pay out for simple and compound interest
+     *
+     * @param princiAmt The total amount to start with
+     * @param rate The interest rate
+     * @param numOfYears The number of years the interest takes affect
+     * @param numOfCompound The number of times the amount is compounded
+     * @return This returns the final amount
+     */
     public static double simpleInterest(double princiAmt, double rate, double numOfYears) {
         double ammt = 0;
         rate = rate / 100;
@@ -76,18 +103,29 @@ public class financialCalculator {
      * @param numPayments The number of payments per year
      * @param loanTerm The number of years over which the money will be repaid
      * @param rate The annual interest rate
-     * @return  This returns the monthly payment value
+     * @return This returns the monthly payment value
      */
     public static double mortgage(double loanAmount, int numPayments, int loanTerm, double rate) {
         double payment;
-        double r = (rate / 12) / 100;
-        double tPN = loanTerm * numPayments;
+        double r = (rate / 12) / 100; // The monthly interest rate in a decimal formate
+        double tPN = loanTerm * numPayments;  // Total number of payments over the term
 
-        payment = (r / (1 - Math.pow((1 + r), -tPN))) * loanAmount;
+        payment = (r / (1 - Math.pow((1 + r), -tPN))) * loanAmount;  // Calculating the payment
 
-        return payment;
+        return payment;  // Returning the payment value
     }
 
+    /**
+     * Calculate what the user's future value will be based on their present
+     * value, the interest and the number of years that will pass
+     *
+     * @param presentValue The amount the user started with
+     * @param interestRate The interest rate the user will receive on top of
+     * their present value
+     * @param numberOfYears The number of years that will pass in order to
+     * receive the future value
+     * @return This returns the future value
+     */
     public static double futureValue(double presentValue, double interestRate, double numberOfYears) {
         double FV = presentValue * Math.pow((1 + interestRate), numberOfYears);
         return FV;
