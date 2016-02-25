@@ -34,8 +34,7 @@ public class financialCalculator {
 
             System.out.print("Your monthly payment is, "
                     + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
-
-            double rate = input.nextDouble(); // The fixed interest rate of the loan
+            
             // Outputing the monthly bill
             System.out.print("Your monthly payment is, " + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
         } else if (decision == 2) {
