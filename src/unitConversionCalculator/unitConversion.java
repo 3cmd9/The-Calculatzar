@@ -32,6 +32,15 @@ public class unitConversion {
         String imputType = keyboard.next();
         System.out.println("imput your converted output type");
         String outputType = keyboard.next();
+        
+            System.out.println("What to convert(enter: ms, s, min, or hours");
+        String time1 = keyboard.next();
+        System.out.println("What to convert to (enter: ms, s, min, or hours");
+        String time2 = keyboard.next();
+        System.out.println("input the amount of time to convert:");
+        double time = keyboard.nextDouble();
+
+        System.out.println(timeconvertms(time1, time2, time) + " " +time2);
 
     }
 
