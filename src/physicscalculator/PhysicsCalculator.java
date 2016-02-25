@@ -31,6 +31,12 @@ public class PhysicsCalculator {
         double a;
         double t;
         double d;
+        double m;
+        double g;
+        double f;
+        double cf;
+        double net;
+        int choice3b;
         while (choice > 3 || choice < 1) {
             System.out.println("Select topic:");
             System.out.println("1: Kinematics");
@@ -202,79 +208,152 @@ public class PhysicsCalculator {
                     }
                     if(choice210 == 1){
                         System.out.println("Height(m) = ?");
-                        energy = kb.nextDouble();
+                        height = kb.nextDouble();
                         System.out.println("Mass(kg) = ?");
                         mass = kb.nextDouble();
-                        System.out.println("Energy = " + fricForce(energy, mass) + " J");
+                        System.out.println("Energy = " + potentialEn(height, mass) + " J");
                     }else if(choice210 == 2){
                         System.out.println("Height(m) = ?");
-                        energy = kb.nextDouble();
-                        System.out.println("Energy(J) = ?");
                         height = kb.nextDouble();
+                        System.out.println("Energy(J) = ?");
+                        energy = kb.nextDouble();
                         System.out.println("Mass = " + potentialMass(energy, height) + " kg");
+                    }else if(choice210 == 3){
+                        System.out.println("Mass(kg) = ?");
+                        mass = kb.nextDouble();
+                        System.out.println("Energy(J) = ?");
+                        energy = kb.nextDouble();
+                        System.out.println("Height = " + potentialHeight(mass, energy) + " m");
                     }
                 }
             }
         }
-        if (choice == 3) {
-            System.out.println("Variable to be solved for:");
+           if (choice == 3) {
+            System.out.println("Equation to be used:");
             System.out.println("1: Net Force");
             System.out.println("2: Gravitational Force");
             System.out.println("3: Frictional Force");
             int choice3 = kb.nextInt();
             if (choice3 == 1) {
-                System.out.println("Mass of object = ?");
-                double m = kb.nextDouble();
-                System.out.println("Acceleration of object = ?");
-                a = kb.nextDouble();
-                double net = netForce(m, a);
-                System.out.println("The net force is " + net);
+                System.out.println("Variable to be solved for:");
+                System.out.println("1: Net Force");
+                System.out.println("2: Mass");
+                System.out.println("3: Acceleration");
+                choice3b = kb.nextInt();
+                if (choice3b == 1) {
+                    System.out.println("Mass of object = ?");
+                    m = kb.nextDouble();
+                    System.out.println("Acceleration of object = ?");
+                    a = kb.nextDouble();
+                    net = netForce(choice3b, m, a);
+                    System.out.println("The net force is " + net + "N");
+                } else if (choice3b == 2) {
+                    System.out.println("Net force of object = ?");
+                    net = kb.nextDouble();
+                    System.out.println("Acceleration of object = ?");
+                    a = kb.nextDouble();
+                    m = netForce(choice3b, net, a);
+                    System.out.println("The mass of the object is " + m + "kg");
+                } else if (choice3b == 3) {
+                    System.out.println("Net force of object = ?");
+                    net = kb.nextDouble();
+                    System.out.println("Mass of object = ?");
+                    m = kb.nextDouble();
+                    a = netForce(choice3b, net, m);
+                    System.out.println("The acceleration of the object is " + a + "m/s^2");
+                }
             } else if (choice3 == 2) {
-                System.out.println("Mass of object = ?");
-                double m = kb.nextDouble();
-                double g = gravForce(m);
-                System.out.println("The gravitational force is " + g);
+                System.out.println("Variable to be solved for:");
+                System.out.println("1: Gravitational Force");
+                System.out.println("2: Mass");
+                choice3b = kb.nextInt();
+                if (choice3b == 1) {
+                    System.out.println("Mass of object = ?");
+                    m = kb.nextDouble();
+                    g = gravForce(choice3b, m);
+                    System.out.println("The gravitational force is " + g + "N");
+                } else if (choice3b == 2) {
+                    System.out.println("Gravitational Force = ?");
+                    g = kb.nextDouble();
+                    m = gravForce(choice3b, g);
+                    System.out.println("The mass of the object is " + m + "kg");
+                }
             } else if (choice3 == 3) {
-                System.out.println("Coefficient of friciton = ?");
-                double cf = kb.nextDouble();
-                System.out.println("Mass of object = ?");
-                double m = kb.nextDouble();
-                double f = fricForce(cf, m);
-                System.out.println("The frictional force is " + f);
+                System.out.println("Variable to be solved for:");
+                System.out.println("1: Frictional Force");
+                System.out.println("2: Mass");
+                System.out.println("3: Coefficient of friction");
+                choice3b = kb.nextInt();
+                if (choice3b == 1) {
+                    System.out.println("Coefficient of friction = ?");
+                    cf = kb.nextDouble();
+                    System.out.println("Mass of object = ?");
+                    m = kb.nextDouble();
+                    f = fricForce(choice3b, cf, m);
+                    System.out.println("The frictional force is " + f + "N");
+                } else if (choice3b == 2) {
+                    System.out.println("Frictional Force = ?");
+                    f = kb.nextDouble();
+                    System.out.println("Coefficient of friction = ?");
+                    cf = kb.nextDouble();
+                    m = fricForce(choice3b, f, cf);
+                    System.out.println("The mass of the object is " + m + "kg");
+                } else if (choice3b == 3) {
+                    System.out.println("Frictional Force = ?");
+                    f = kb.nextDouble();
+                    System.out.println("Mass of object = ?");
+                    m = kb.nextDouble();
+                    cf = fricForce(choice3b, f, m);
+                    System.out.println("The coefficient of friction is " + cf);  
+                }
             }
         }
     }
 
     /**
      *
-     * @param mass
-     * @param acc
-     * @return
+     * @param process the mathematical operation to be performed
+     * @param first the first variable to be used
+     * @param second the second variable to be used
+     * @return the first variable multiplied or divided by the second
      */
-    public static double netForce(double mass, double acc) {
-        double nf = mass * acc;
-        return nf;
+    public static double netForce(int process, double first, double second) {
+        if (process == 1) {
+            return first * second;
+        } else {
+            return first / second;
+        }
     }
 
     /**
      *
-     * @param mass
-     * @return
+     * @param process the mathematical operation to be performed
+     * @param first the first variable to be used
+     * @return the variable multiplied or divided by 9.8
      */
-    public static double gravForce(double mass) {
-        double gf = mass * 9.8;
-        return gf;
+    public static double gravForce(int process, double first) {
+        if (process == 1) {
+            return first * 9.8;
+        } else {
+            return first / 9.8;
+        }
     }
 
     /**
      *
-     * @param friction
-     * @param mass
+     * @param a
+     * @param b
      * @return
      */
-    public static double fricForce(double friction, double mass) {
-        double ff = friction * mass * 9.8;
-        return ff;
+    public static double fricForce(int process, double first, double second) {
+        if (process == 1) {
+            return first * second * 9.8;
+        } else {
+            return first / (second * 9.8);
+        }
+    public static double potentialEn(double a, double b) {
+        double c = a * b * 9.8;
+        return c;
     }
 
     /**
@@ -320,5 +399,9 @@ public class PhysicsCalculator {
     public static Double potentialMass(Double E, Double h){
         Double m = E/(h*9.8);
         return m;
+    }
+    public static Double potentialHeight(Double E, Double m){
+        Double h = E/(m*9.8);
+        return h;
     }
 }
