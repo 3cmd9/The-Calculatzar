@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Gavin Christie, Carter Ford and Jordan Hurley (Sort of)
+ * @author Gavin Christie, Carter Ford and Jordan Hurley (leader of the group)
  */
 public class financialCalculator {
 
@@ -21,18 +21,23 @@ public class financialCalculator {
         System.out.println("Greetings! Which type of finance can I help you with today?");
         System.out.print("\n   Mortgage - 1\n   Interest - 2\n   Value - 3\n");
         int decision = input.nextInt();
+        // To calculate the monthly payment of a mortgage
         if (decision == 1) {
             System.out.print("Loan amount: ");
-            double loanAmount = input.nextDouble();
+            double loanAmount = input.nextDouble(); // Value in dollars of the loan
             System.out.print("Number of payments per year: ");
-            int num = input.nextInt();
+            int num = input.nextInt();   // Number of payments made in one year
             System.out.print("Number of years to repay loan: ");
-            int term = input.nextInt();
+            int term = input.nextInt(); // How many years the loan is to be payed off in
             System.out.print("Fixed interest rate: ");
             double rate = input.nextDouble();
 
             System.out.print("Your monthly payment is, "
                     + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
+
+            double rate = input.nextDouble(); // The fixed interest rate of the loan
+            // Outputing the monthly bill
+            System.out.print("Your monthly payment is, " + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
         } else if (decision == 2) {
             System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2\n");
             int typeOfInter = input.nextInt();
