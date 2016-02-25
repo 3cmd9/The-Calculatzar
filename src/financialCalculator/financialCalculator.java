@@ -16,6 +16,7 @@ public class financialCalculator {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("#.##");
 
         System.out.println("Greetings! Which type of finance can I help you with today?");
         System.out.print("\n   Mortgage - 1\n   Interest - 2\n   Value - 3\n");
@@ -29,10 +30,8 @@ public class financialCalculator {
             int term = input.nextInt();
             System.out.print("Fixed interest rate: ");
             double rate = input.nextDouble();
-            
-            DecimalFormat df = new DecimalFormat("#.##");
-            
-            System.out.print("Your monthly payment is, " 
+
+            System.out.print("Your monthly payment is, "
                     + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
         } else if (decision == 2) {
             System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2\n");
@@ -55,27 +54,28 @@ public class financialCalculator {
             System.out.println("Would you like to determine future or present value? ");
             String answer = input.nextLine();
             answer = answer.toUpperCase();
-            if(answer.equals("FUTURE")){
+            if (answer.equals("FUTURE")) {
                 System.out.println("Thank you for selecting the future value calculator."
-                                        + " Please enter your present value. ");
+                        + " Please enter your present value. ");
                 double presentValue = input.nextDouble();
                 System.out.println("Please enter your interest rate. ");
                 double interestRate = input.nextDouble();
                 System.out.println("Finally enter the desired time period. ");
                 double numberOfYears = input.nextDouble();
-                System.out.println("Your future value is" 
+                System.out.println("Your future value is"
                         + df.format(futureValue(presentValue, interestRate, numberOfYears)));
             }
         }
     }
-        /**
+
+    /**
      * Calculates the final pay out for simple and compound interest
      *
      * @param princiAmt The total amount to start with
      * @param rate The interest rate
      * @param numOfYears The number of years the interest takes affect
      * @param numOfCompound The number of times the amount is compounded
-     * @return  This returns the final amount
+     * @return This returns the final amount
      */
     public static double simpleInterest(double princiAmt, double rate, double numOfYears) {
         double ammt = 0;
@@ -112,11 +112,14 @@ public class financialCalculator {
     }
 
     /**
-     * Calculate what the user's future value will be based on their present value, 
-     *                  the interest and the number of years that will pass
+     * Calculate what the user's future value will be based on their present
+     * value, the interest and the number of years that will pass
+     *
      * @param presentValue The amount the user started with
-     * @param interestRate The interest rate the user will receive on top of their present value
-     * @param numberOfYears  The number of years that will pass in order to receive the future value
+     * @param interestRate The interest rate the user will receive on top of
+     * their present value
+     * @param numberOfYears The number of years that will pass in order to
+     * receive the future value
      * @return This returns the future value
      */
     public static double futureValue(double presentValue, double interestRate, double numberOfYears) {
