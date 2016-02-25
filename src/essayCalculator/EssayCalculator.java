@@ -164,10 +164,11 @@ public class EssayCalculator {
          //Vowel count time!
         //loop through essay
          //once it comes across a, e, i ,o or u, add one to the appropriate letter 
+    //selby j
         public static void Vowel(String essay){
     System.out.println("Please input essay");
     
-     char A='a', E='e', I='i', O='o', U='u';
+ //    char A='a', E='e', I='i', O='o', U='u';
        int vowel[] = new int [5];
        
        for(int i =0; i<essay.length();i++){
