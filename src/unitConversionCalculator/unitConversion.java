@@ -16,9 +16,12 @@ public class unitConversion {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         String choice;
+
+        System.out.println("Welcome to unit conversion!");
+        System.out.println("We have the best converters");
+        
         do {
-            System.out.println("Welcome to unit conversion!");
-            System.out.println("We have the best converters");
+
             System.out.println("Distance - Mass - Time");
             System.out.println("Please enter which one you would like to use!");
 
@@ -61,7 +64,7 @@ public class unitConversion {
                     break;
             }
 
-        } while (choice.equals("stop"));
+        } while (!choice.equals("stop"));
     }
 
     public static double distanceConvert(double dist, int dUnit, int cUnit) {
