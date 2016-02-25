@@ -63,7 +63,9 @@ public class unitConversion {
                     System.out.println("Please try again.");
                     break;
             }
-
+            System.out.println("===================================");
+            System.out.println("");
+            System.out.println("===================================");
         } while (!choice.equals("stop"));
     }
 
