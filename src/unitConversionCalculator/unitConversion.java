@@ -26,12 +26,15 @@ public class unitConversion {
         System.out.println(distanceConvert(dist, dUnit, cUnit));
 
         Scanner keyboard = new Scanner(System.in);
+        
         System.out.println("imput your value");
         double imput = keyboard.nextDouble();
         System.out.println("imput your imput type");
         String imputType = keyboard.next();
         System.out.println("imput your converted output type");
         String outputType = keyboard.next();
+        
+        
         
             System.out.println("What to convert(enter: ms, s, min, or hours");
         String time1 = keyboard.next();
@@ -40,7 +43,7 @@ public class unitConversion {
         System.out.println("input the amount of time to convert:");
         double time = keyboard.nextDouble();
 
-        System.out.println(timeconvertms(time1, time2, time) + " " +time2);
+        System.out.println(timeconvert(time1, time2, time) + " " + time2);
 
     }
 
@@ -102,7 +105,7 @@ public class unitConversion {
      * @param time The amount of time to be converted
      * @return
      */
-    public static double timeconvertms(String time1, String time2, double time) {
+    public static double timeconvert(String time1, String time2, double time) {
 
         // make a new time variable equal to input
         double newtime = time;
