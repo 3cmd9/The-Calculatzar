@@ -17,13 +17,34 @@ public class unitConversion {
 
         Scanner read = new Scanner(System.in);
 
-        System.out.println("milli[1] - centi[2] - deci[3] - meter[4] - deka[5] - hecto[6] - kilo[7]");
-        System.out.println("Please give distance, current unit, and desired unit:");
-        double dist = read.nextDouble();
-        int cUnit = read.nextInt();
-        int dUnit = read.nextInt();
+        System.out.println("Welcome to unit conversion!");
+        System.out.println("We have the best converters");
+        System.out.println("Distance - Mass - Time");
+        System.out.println("Please enter which one you would like to use!");
 
-        System.out.println(distanceConvert(dist, dUnit, cUnit));
+        String choice = read.next();
+        choice = choice.toLowerCase();
+
+        if (choice.equals("distance")) {
+            
+            // The distance converter
+            System.out.println("milli[1] - centi[2] - deci[3] - meter[4] - deka[5] - hecto[6] - kilo[7]");
+            System.out.println("Please give distance, current unit, and desired unit:");
+            double dist = read.nextDouble();
+            int cUnit = read.nextInt();
+            int dUnit = read.nextInt();
+
+            System.out.println(distanceConvert(dist, dUnit, cUnit));
+            
+            
+            
+        } else if (choice.equals("mass")) {
+
+        } else if (choice.equals("time")) {
+
+        } else {
+            System.out.println("Please try again.");
+        }
 
         Scanner keyboard = new Scanner(System.in);
         System.out.println("imput your value");
@@ -32,15 +53,15 @@ public class unitConversion {
         String imputType = keyboard.next();
         System.out.println("imput your converted output type");
         String outputType = keyboard.next();
-        
-            System.out.println("What to convert(enter: ms, s, min, or hours");
+
+        System.out.println("What to convert(enter: ms, s, min, or hours");
         String time1 = keyboard.next();
         System.out.println("What to convert to (enter: ms, s, min, or hours");
         String time2 = keyboard.next();
         System.out.println("input the amount of time to convert:");
         double time = keyboard.nextDouble();
 
-        System.out.println(timeconvertms(time1, time2, time) + " " +time2);
+        System.out.println(timeconvertms(time1, time2, time) + " " + time2);
 
     }
 
