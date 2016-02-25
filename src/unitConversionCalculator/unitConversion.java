@@ -16,56 +16,57 @@ public class unitConversion {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         String choice;
+
+        System.out.println("Welcome to unit conversion!");
+        System.out.println("We have the best converters");
+        
         do {
-            System.out.println("Welcome to unit conversion!");
-            System.out.println("We have the best converters");
+
             System.out.println("Distance - Mass - Time");
             System.out.println("Please enter which one you would like to use!");
 
             choice = keyboard.next();
             choice = choice.toLowerCase();
 
-            if (choice.equals("distance")) {
+            switch (choice) {
+                case "distance":
+                    // The distance converter
+                    System.out.println("milli[1] - centi[2] - deci[3] - meter[4] - deka[5] - hecto[6] - kilo[7]");
+                    System.out.println("Please give distance, current unit, and desired unit:");
+                    double dist = keyboard.nextDouble();
+                    int cUnit = keyboard.nextInt();
+                    int dUnit = keyboard.nextInt();
 
-                // The distance converter
-                System.out.println("milli[1] - centi[2] - deci[3] - meter[4] - deka[5] - hecto[6] - kilo[7]");
-                System.out.println("Please give distance, current unit, and desired unit:");
-                double dist = keyboard.nextDouble();
-                int cUnit = keyboard.nextInt();
-                int dUnit = keyboard.nextInt();
+                    System.out.println(distanceConvert(dist, dUnit, cUnit));
+                    break;
+                case "mass":
+                    System.out.println("imput your value");
+                    double imput = keyboard.nextDouble();
+                    System.out.println("imput your imput type");
+                    String imputType = keyboard.next();
+                    System.out.println("imput your converted output type");
+                    String outputType = keyboard.next();
 
-                System.out.println(distanceConvert(dist, dUnit, cUnit));
+                    System.out.println(convertMass(imput, imputType, outputType));
+                    break;
+                case "time":
+                    System.out.println("What to convert(enter: ms, s, min, or hours");
+                    String time1 = keyboard.next();
+                    System.out.println("What to convert to (enter: ms, s, min, or hours");
+                    String time2 = keyboard.next();
+                    System.out.println("input the amount of time to convert:");
+                    double time = keyboard.nextDouble();
 
-            } else if (choice.equals("mass")) {
-
-                
-                System.out.println("imput your value");
-                double imput = keyboard.nextDouble();
-                System.out.println("imput your imput type");
-                String imputType = keyboard.next();
-                System.out.println("imput your converted output type");
-                String outputType = keyboard.next();
-
-                System.out.println(convertMass(imput, imputType, outputType));
-                
-            } else if (choice.equals("time")) {
-                
-                
-                System.out.println("What to convert(enter: ms, s, min, or hours");
-                String time1 = keyboard.next();
-                System.out.println("What to convert to (enter: ms, s, min, or hours");
-                String time2 = keyboard.next();
-                System.out.println("input the amount of time to convert:");
-                double time = keyboard.nextDouble();
-
-                System.out.println(timeconvert(time1, time2, time) + " " + time2);
-                
-            } else {
-                
-                System.out.println("Please try again.");
+                    System.out.println(timeconvert(time1, time2, time) + " " + time2);
+                    break;
+                default:
+                    System.out.println("Please try again.");
+                    break;
             }
-
-        } while (choice.equals("stop"));
+            System.out.println("===================================");
+            System.out.println("");
+            System.out.println("===================================");
+        } while (!choice.equals("stop"));
     }
 
     public static double distanceConvert(double dist, int dUnit, int cUnit) {
