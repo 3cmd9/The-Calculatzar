@@ -202,16 +202,22 @@ public class PhysicsCalculator {
                     }
                     if(choice210 == 1){
                         System.out.println("Height(m) = ?");
-                        energy = kb.nextDouble();
+                        height = kb.nextDouble();
                         System.out.println("Mass(kg) = ?");
                         mass = kb.nextDouble();
-                        System.out.println("Energy = " + fricForce(energy, mass) + " J");
+                        System.out.println("Energy = " + potentialEn(height, mass) + " J");
                     }else if(choice210 == 2){
                         System.out.println("Height(m) = ?");
-                        energy = kb.nextDouble();
-                        System.out.println("Energy(J) = ?");
                         height = kb.nextDouble();
+                        System.out.println("Energy(J) = ?");
+                        energy = kb.nextDouble();
                         System.out.println("Mass = " + potentialMass(energy, height) + " kg");
+                    }else if(choice210 == 3){
+                        System.out.println("Mass(kg) = ?");
+                        mass = kb.nextDouble();
+                        System.out.println("Energy(J) = ?");
+                        energy = kb.nextDouble();
+                        System.out.println("Height = " + potentialHeight(mass, energy) + " m");
                     }
                 }
             }
@@ -239,7 +245,8 @@ public class PhysicsCalculator {
                 double cf = kb.nextDouble();
                 System.out.println("Mass of object = ?");
                 double m = kb.nextDouble();
-                double f = fricForce(cf, m);
+                double f;
+                f = fricForce(cf, m);
                 System.out.println("The frictional force is " + f);
             }
         }
@@ -268,13 +275,13 @@ public class PhysicsCalculator {
 
     /**
      *
-     * @param friction
-     * @param mass
+     * @param a
+     * @param b
      * @return
      */
-    public static double fricForce(double friction, double mass) {
-        double ff = friction * mass * 9.8;
-        return ff;
+    public static double potentialEn(double a, double b) {
+        double c = a * b * 9.8;
+        return c;
     }
 
     /**
@@ -320,5 +327,9 @@ public class PhysicsCalculator {
     public static Double potentialMass(Double E, Double h){
         Double m = E/(h*9.8);
         return m;
+    }
+    public static Double potentialHeight(Double E, Double m){
+        Double h = E/(m*9.8);
+        return h;
     }
 }
