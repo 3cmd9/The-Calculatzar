@@ -73,4 +73,91 @@ public class unitConversion {
         return output;
 
     }
+
+    /**
+     * This method takes 2 string inputs of different value and converts between
+     * with a number that is inputed Method returns the value of the converted
+     * time
+     *
+     * @param time1 The unit of time to be converted from
+     * @param time2 The unit of time to be converted to
+     * @param time The amount of time to be converted
+     * @return
+     */
+    public static double timeconvertms(String time1, String time2, double time) {
+
+        // make a new time variable equal to input
+        double newtime = time;
+
+        //converting from milliseconds
+        if (time1.equals("ms") && time2.equals("s")) {
+
+            newtime = newtime / 1000;
+        }
+
+        if (time1.equals("ms") && time2.equals("min")) {
+
+            newtime = newtime / 60000;
+        }
+
+        if (time1.equals("ms") && time2.equals("hours")) {
+
+            newtime = newtime / 3600000;
+
+        }
+
+        //convert from seconds
+        if (time1.equals("s") && time2.equals("ms")) {
+
+            newtime = newtime * 1000;
+        }
+
+        if (time1.equals("s") && time2.equals("min")) {
+
+            newtime = newtime / 60;
+        }
+
+        if (time1.equals("s") && time2.equals("hours")) {
+
+            newtime = newtime / 3600;
+
+        }
+
+        //convert from minutes
+        if (time1.equals("min") && time2.equals("s")) {
+
+            newtime = newtime * 60;
+        }
+
+        if (time1.equals("min") && time2.equals("ms")) {
+
+            newtime = newtime * 60000;
+        }
+
+        if (time1.equals("min") && time2.equals("hours")) {
+
+            newtime = newtime / 60;
+
+        }
+
+        // convert from hours
+        if (time1.equals("hours") && time2.equals("s")) {
+
+            newtime = newtime * 3600;
+        }
+
+        if (time1.equals("hours") && time2.equals("min")) {
+
+            newtime = newtime * 60;
+        }
+
+        if (time1.equals("hours") && time2.equals("ms")) {
+
+            newtime = newtime * 3600000;
+
+        }
+
+        // return the converted time
+        return newtime;
+    }
 }

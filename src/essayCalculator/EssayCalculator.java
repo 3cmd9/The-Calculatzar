@@ -11,7 +11,6 @@ import java.util.Scanner;
  *
  * @author 070101720
  */
-import java.util.Scanner;
 
 public class EssayCalculator {
 

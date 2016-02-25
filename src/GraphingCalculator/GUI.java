@@ -5,14 +5,17 @@
  */
 package GraphingCalculator;
 
+import static GraphingCalculator.DerivativeCalc.*;
+import static GraphingCalculator.TangentLine.*;
 import java.awt.*;
-
 /**
  *
  * @author 067011981
  */
 public class GUI extends javax.swing.JFrame {
-
+    
+    public static double OGCoeff [] = new double [4];
+    public static double OGExp [] = new double [4];
     /**
      * Creates new form NewJFrame
      */
@@ -30,14 +33,40 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        derive = new javax.swing.JButton();
+        x0 = new javax.swing.JLabel();
+        coef0 = new javax.swing.JTextField();
+        pow0 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        plus1 = new javax.swing.JLabel();
+        coef1 = new javax.swing.JTextField();
+        pow1 = new javax.swing.JTextField();
+        x1 = new javax.swing.JLabel();
+        plus2 = new javax.swing.JLabel();
+        coef2 = new javax.swing.JTextField();
+        x2 = new javax.swing.JLabel();
+        pow2 = new javax.swing.JTextField();
+        plus3 = new javax.swing.JLabel();
+        coef3 = new javax.swing.JTextField();
+        x3 = new javax.swing.JLabel();
+        pow3 = new javax.swing.JTextField();
+        Integrate = new javax.swing.JButton();
+        fAt = new javax.swing.JLabel();
+        xValue = new javax.swing.JTextField();
+        fAt1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        compute = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -45,38 +74,108 @@ public class GUI extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 328, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 306, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Derive");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        derive.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        derive.setText("Derive");
+        derive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                deriveMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                deriveMousePressed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("ItalicC", 1, 40)); // NOI18N
-        jLabel1.setText("x");
+        x0.setFont(new java.awt.Font("Lucida Calligraphy", 0, 40)); // NOI18N
+        x0.setText("x");
 
-        jTextField11.setFont(new java.awt.Font("ItalicT", 0, 11)); // NOI18N
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
-            }
-        });
+        coef0.setFont(new java.awt.Font("ItalicT", 0, 11)); // NOI18N
 
-        jTextField12.setFont(new java.awt.Font("ItalicC", 0, 11)); // NOI18N
+        pow0.setFont(new java.awt.Font("ItalicC", 0, 11)); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Swis721 BlkCn BT", 0, 14)); // NOI18N
-        jButton2.setText("+");
-        jButton2.setBorder(null);
-
-        jLabel2.setFont(new java.awt.Font("ItalicC", 1, 35)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 35)); // NOI18N
         jLabel2.setText("f(x)=");
+
+        jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 35)); // NOI18N
+        jLabel3.setText(" ");
+
+        jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 0, 20)); // NOI18N
+        jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        jLabel5.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel5.setText("Original");
+
+        jLabel6.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel6.setText("Derived/Integrated");
+
+        plus1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 40)); // NOI18N
+        plus1.setText("+");
+
+        coef1.setFont(new java.awt.Font("ItalicT", 0, 11)); // NOI18N
+
+        pow1.setFont(new java.awt.Font("ItalicC", 0, 11)); // NOI18N
+
+        x1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 40)); // NOI18N
+        x1.setText("x");
+
+        plus2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 40)); // NOI18N
+        plus2.setText("+");
+
+        coef2.setFont(new java.awt.Font("ItalicT", 0, 11)); // NOI18N
+
+        x2.setFont(new java.awt.Font("Lucida Calligraphy", 0, 40)); // NOI18N
+        x2.setText("x");
+
+        pow2.setFont(new java.awt.Font("ItalicC", 0, 11)); // NOI18N
+
+        plus3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 40)); // NOI18N
+        plus3.setText("+");
+
+        coef3.setFont(new java.awt.Font("ItalicT", 0, 11)); // NOI18N
+
+        x3.setFont(new java.awt.Font("Lucida Calligraphy", 0, 40)); // NOI18N
+        x3.setText("x");
+
+        pow3.setFont(new java.awt.Font("ItalicC", 0, 11)); // NOI18N
+
+        Integrate.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        Integrate.setText("Integrate");
+        Integrate.setBorder(null);
+        Integrate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                IntegrateMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                IntegrateMousePressed(evt);
+            }
+        });
+
+        fAt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 35)); // NOI18N
+        fAt.setText("f(");
+
+        xValue.setFont(new java.awt.Font("ItalicC", 0, 11)); // NOI18N
+
+        fAt1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 35)); // NOI18N
+        fAt1.setText(")=");
+
+        jLabel7.setFont(new java.awt.Font("Lucida Calligraphy", 0, 30)); // NOI18N
+        jLabel7.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        compute.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        compute.setText("Compute");
+        compute.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                computeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,24 +184,74 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(coef0, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(x0)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pow0, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(2, 2, 2)
+                                        .addComponent(plus1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(coef1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(x1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pow1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(plus2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(coef2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(x2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pow2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(plus3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(coef3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(x3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pow3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 10, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(derive, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Integrate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(compute)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fAt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(xValue, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fAt1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,18 +260,54 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
+                            .addComponent(x0, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(coef0, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(plus1)
+                            .addComponent(x1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(coef1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(149, 149, 149)
-                .addComponent(jButton1)
-                .addContainerGap(281, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pow0, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pow1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pow2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pow3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(plus2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(coef2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(x2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(plus3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(coef3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(x3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)))
+                .addGap(132, 132, 132)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(derive, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Integrate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(205, 205, 205))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(xValue, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fAt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fAt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(compute)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -162,8 +347,38 @@ public class GUI extends javax.swing.JFrame {
                 new GUI().setVisible(true);
             }
         });
-    }private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-
+        
+    }private void deriveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deriveMouseClicked
+        jLabel3.setText("f'(x)=");
+        coeff[0] = (Double.valueOf(coef0.getText()));
+        exp[0] = (Double.valueOf(pow0.getText()));
+        coeff[1] = (Double.valueOf(coef1.getText()));
+        exp[1] = (Double.valueOf(pow1.getText()));
+        coeff[2] = (Double.valueOf(coef2.getText()));
+        exp[2] = (Double.valueOf(pow2.getText()));
+        coeff[3] = (Double.valueOf(coef3.getText()));
+        exp[3] = (Double.valueOf(pow3.getText()));
+        for (int i = 0; i < 4; i++){
+            OGCoeff[i] = coeff[i];
+            OGExp[i] = exp[i];
+        }
+        graph(coeff, exp, 0);
+        coefficientD();
+        jLabel4.setText(coeff[0] + "x^" + (int)exp[0] + " + " + coeff[1] + "x^" + 
+                (int)exp[1] + " + " + coeff[2] + "x^" + (int)exp[2] + " + " + 
+                coeff[3] + "x^" + (int)exp[3]);
+        graph(coeff, exp, 1);
+    }//GEN-LAST:event_deriveMouseClicked
+    
+    private double computeSum (double coef[], double exp[], double x){
+        double sum = 0;
+        for (int i = 0; i < coef.length; i++){
+            sum += (coef[i]*Math.pow(x,exp[i]));
+        }
+        return sum;
+    }
+    
+    private void graph(double coef[], double exp[], int type){
         int z = -6;
         int a = 6;
         Graphics g = jPanel2.getGraphics();
@@ -179,63 +394,117 @@ public class GUI extends javax.swing.JFrame {
             z++;
             a--;
         }
-        double x = -100;
+        double x = -150;
         double y;
-        double coef5 = (Double.valueOf(jTextField1.getText()));     //Get coefficients
-        double coef4 = (Double.valueOf(jTextField2.getText()));     //
-        double coef3 = (Double.valueOf(jTextField3.getText()));     //
-        double coef2 = (Double.valueOf(jTextField4.getText()));     //
-        double coef1 = (Double.valueOf(jTextField5.getText()));     //
-        double coef0 = (Double.valueOf(jTextField6.getText()));     //
-        double coefPowx = (Double.valueOf(jTextField7.getText()));  //
-        double coefSin = (Double.valueOf(jTextField8.getText()));   //
-        double coefCos = (Double.valueOf(jTextField9.getText()));   //
-        double coefTan = (Double.valueOf(jTextField10.getText()));  //
         do {
-            y = (coefSin*Math.sin(x)) + (coefCos*Math.cos(x)) + (coefTan*Math.tan(x)) + (coef5*Math.pow(x,5)) +(coef4*Math.pow(x,4)) + (coef3*Math.pow(x,3)) + (coef2*Math.pow(x, 2)) + (coef1*x) + coef0;     //Equation for y
-            if (!jTextField7.getText().equals("0")){
-                if(coefPowx > 0){
-                    y = y + Math.pow(coefPowx,x);
-                }
-                else if(coefPowx < 0){
-                    y = y + -(Math.pow(-coefPowx,x));
-                }
-            }
+            y = computeSum(coef, exp, x);//Equation for y
             x = x + 0.001;
-            g.setColor(Color.black);
-            double drawx = (x+10)*26;
-            double drawy = (-y+10)*26;
+            if(type == 0){
+                g.setColor(Color.red);
+            }else if(type == 1){
+                g.setColor(Color.blue);
+            }else if(type == 2){
+                g.setColor(Color.green);
+            }
+            double drawx = (x+6)*25;
+            double drawy = (-y+6)*25;
             g.fillRect((int)drawx, (int)drawy, 2, 2);        //Draw dot on coordinate
         }while (x <= 100);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }
     
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
 
     }//GEN-LAST:event_jButton2MouseClicked
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        coef0.setText("0");
+        pow0.setText("0");
+        coef1.setText("0");
+        pow1.setText("0");
+        coef2.setText("0");
+        pow2.setText("0");
+        coef3.setText("0");
+        pow3.setText("0");
+    }//GEN-LAST:event_formWindowOpened
+
+    private void IntegrateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IntegrateMouseClicked
+        jLabel3.setText("∫f(x)=");
+        coeff[0] = (Double.valueOf(coef0.getText()));
+        exp[0] = (Double.valueOf(pow0.getText()));
+        coeff[1] = (Double.valueOf(coef1.getText()));
+        exp[1] = (Double.valueOf(pow1.getText()));
+        coeff[2] = (Double.valueOf(coef2.getText()));
+        exp[2] = (Double.valueOf(pow2.getText()));
+        coeff[3] = (Double.valueOf(coef3.getText()));
+        exp[3] = (Double.valueOf(pow3.getText()));
+        for (int i = 0; i < 4; i++){
+            OGCoeff[i] = coeff[i];
+            OGExp[i] = exp[i];
+        }
+        graph(coeff, exp, 0);
+        integralD();
+        jLabel4.setText(coeff[0] + "x^" + (int)exp[0] + " + " + coeff[1] + "x^" + 
+                (int)exp[1] + " + " + coeff[2] + "x^" + (int)exp[2] + " + " + 
+                coeff[3] + "x^" + (int)exp[3]);
+        graph(coeff, exp, 1);
+    }//GEN-LAST:event_IntegrateMouseClicked
+
+    private void computeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computeMouseClicked
+        jLabel7.setText(""+findYAtX(OGExp, OGCoeff, Double.valueOf(xValue.getText())));
+        double m[] = new double [4];
+        double p[] = new double[4];
+        p[0]=1;
+        p[1]=0;
+        p[2]=0;
+        p[3]=0;
+        m[0]=findYAtX(exp,coeff,Double.valueOf(xValue.getText()));
+        m[1]=findYInt(m[0], Double.valueOf(xValue.getText()), findYAtX(OGExp, OGCoeff, Double.valueOf(xValue.getText())));
+        m[2]=0;
+        m[3]=0;
+        System.out.println(m[0]);
+        System.out.println(m[1]);
+        graph(m, p, 2);
+    }//GEN-LAST:event_computeMouseClicked
+
+    private void deriveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deriveMousePressed
+        jPanel2.removeAll();
+        jPanel2.updateUI();
+    }//GEN-LAST:event_deriveMousePressed
+
+    private void IntegrateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IntegrateMousePressed
+        jPanel2.removeAll();
+        jPanel2.updateUI();
+    }//GEN-LAST:event_IntegrateMousePressed
     
 
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton Integrate;
+    private javax.swing.JTextField coef0;
+    private javax.swing.JTextField coef1;
+    private javax.swing.JTextField coef2;
+    private javax.swing.JTextField coef3;
+    private javax.swing.JButton compute;
+    private javax.swing.JButton derive;
+    private javax.swing.JLabel fAt;
+    private javax.swing.JLabel fAt1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
+    private javax.swing.JLabel plus1;
+    private javax.swing.JLabel plus2;
+    private javax.swing.JLabel plus3;
+    private javax.swing.JTextField pow0;
+    private javax.swing.JTextField pow1;
+    private javax.swing.JTextField pow2;
+    private javax.swing.JTextField pow3;
+    private javax.swing.JLabel x0;
+    private javax.swing.JLabel x1;
+    private javax.swing.JLabel x2;
+    private javax.swing.JLabel x3;
+    private javax.swing.JTextField xValue;
     // End of variables declaration//GEN-END:variables
 }

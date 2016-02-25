@@ -5,11 +5,12 @@
  */
 package financialCalculator;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
  *
- * @author Gavin Christie, Carter Ford & Jordan Hurley (Sort of)
+ * @author Gavin Christie, Carter Ford and Jordan Hurley (Sort of)
  */
 public class financialCalculator {
 
@@ -29,7 +30,9 @@ public class financialCalculator {
             System.out.print("Fixed interest rate: ");
             double rate = input.nextDouble();
             
-            System.out.print("Your monthly payment is, " + mortgage(loanAmount, num, term, rate));
+            DecimalFormat df = new DecimalFormat("#.##");
+            
+            System.out.print("Your monthly payment is, " + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
         } else if (decision == 2) {
             System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2\n");
             int typeOfInter = input.nextInt();
@@ -46,13 +49,11 @@ public class financialCalculator {
                 double numOfComp = input.nextDouble();
                 double numOfYears = input.nextDouble();
                 System.out.println(compoundInterest(princiAmt, rate, numOfComp, numOfYears));
-
             }
         } else if (decision == 3) {
             // Jordans stuff goes here
         }
     }
-
     public static double simpleInterest(double princiAmt, double rate, double numOfYears) {
         double ammt = 0;
         rate = rate / 100;
