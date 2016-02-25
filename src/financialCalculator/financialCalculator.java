@@ -103,12 +103,12 @@ public class financialCalculator {
      */
     public static double mortgage(double loanAmount, int numPayments, int loanTerm, double rate) {
         double payment;
-        double r = (rate / 12) / 100;
-        double tPN = loanTerm * numPayments;
+        double r = (rate / 12) / 100; // The monthly interest rate in a decimal formate
+        double tPN = loanTerm * numPayments;  // Total number of payments over the term
 
-        payment = (r / (1 - Math.pow((1 + r), -tPN))) * loanAmount;
+        payment = (r / (1 - Math.pow((1 + r), -tPN))) * loanAmount;  // Calculating the payment
 
-        return payment;
+        return payment;  // Returning the payment value
     }
 
     public static double futureValue(double presentValue, double interestRate, double numberOfYears) {
