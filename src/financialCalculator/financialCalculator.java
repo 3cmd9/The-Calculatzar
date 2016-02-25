@@ -20,6 +20,7 @@ public class financialCalculator {
         System.out.println("Greetings! Which type of finance can I help you with today? :3");
         System.out.print("\n   Mortgage - 1\n   Interest - 2\n   No Idea - 3\n");
         int decision = input.nextInt();
+        // To calculate the monthly payment of a mortgage
         if (decision == 1) {
             System.out.print("Loan amount: ");
             double loanAmount = input.nextDouble();
