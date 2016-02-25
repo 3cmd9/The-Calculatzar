@@ -87,6 +87,9 @@ public class GUI extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deriveMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                deriveMousePressed(evt);
+            }
         });
 
         x0.setFont(new java.awt.Font("Lucida Calligraphy", 0, 40)); // NOI18N
@@ -111,7 +114,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel6.setText("Derived");
+        jLabel6.setText("Derived/Integrated");
 
         plus1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 40)); // NOI18N
         plus1.setText("+");
@@ -150,6 +153,9 @@ public class GUI extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 IntegrateMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                IntegrateMousePressed(evt);
+            }
         });
 
         fAt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 35)); // NOI18N
@@ -179,11 +185,6 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -224,7 +225,12 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(x3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(pow3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 10, Short.MAX_VALUE)))
+                                .addGap(0, 10, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
@@ -295,12 +301,11 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(9, 9, 9)
-                            .addComponent(xValue, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(fAt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fAt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(xValue, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fAt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fAt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(compute)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -357,23 +362,23 @@ public class GUI extends javax.swing.JFrame {
             OGCoeff[i] = coeff[i];
             OGExp[i] = exp[i];
         }
-        graph(coeff, exp, false);
+        graph(coeff, exp, 0);
         coefficientD();
         jLabel4.setText(coeff[0] + "x^" + (int)exp[0] + " + " + coeff[1] + "x^" + 
                 (int)exp[1] + " + " + coeff[2] + "x^" + (int)exp[2] + " + " + 
                 coeff[3] + "x^" + (int)exp[3]);
-        graph(coeff, exp, true);
+        graph(coeff, exp, 1);
     }//GEN-LAST:event_deriveMouseClicked
     
     private double computeSum (double coef[], double exp[], double x){
         double sum = 0;
         for (int i = 0; i < coef.length; i++){
-            sum += (coeff[i]*Math.pow(x,exp[i]));
+            sum += (coef[i]*Math.pow(x,exp[i]));
         }
         return sum;
     }
     
-    private void graph(double coef[], double exp[], boolean derive){
+    private void graph(double coef[], double exp[], int type){
         int z = -6;
         int a = 6;
         Graphics g = jPanel2.getGraphics();
@@ -394,10 +399,12 @@ public class GUI extends javax.swing.JFrame {
         do {
             y = computeSum(coef, exp, x);//Equation for y
             x = x + 0.001;
-            if(derive == false){
+            if(type == 0){
                 g.setColor(Color.red);
-            }else{
+            }else if(type == 1){
                 g.setColor(Color.blue);
+            }else if(type == 2){
+                g.setColor(Color.green);
             }
             double drawx = (x+6)*25;
             double drawy = (-y+6)*25;
@@ -434,24 +441,40 @@ public class GUI extends javax.swing.JFrame {
             OGCoeff[i] = coeff[i];
             OGExp[i] = exp[i];
         }
-        graph(coeff, exp, false);
+        graph(coeff, exp, 0);
         integralD();
         jLabel4.setText(coeff[0] + "x^" + (int)exp[0] + " + " + coeff[1] + "x^" + 
                 (int)exp[1] + " + " + coeff[2] + "x^" + (int)exp[2] + " + " + 
                 coeff[3] + "x^" + (int)exp[3]);
-        graph(coeff, exp, true);
+        graph(coeff, exp, 1);
     }//GEN-LAST:event_IntegrateMouseClicked
 
     private void computeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computeMouseClicked
         jLabel7.setText(""+findYAtX(OGExp, OGCoeff, Double.valueOf(xValue.getText())));
-        /*double m [] = new double [2];
-        double p [] = new double [2];
+        double m[] = new double [4];
+        double p[] = new double[4];
         p[0]=1;
         p[1]=0;
+        p[2]=0;
+        p[3]=0;
         m[0]=findYAtX(exp,coeff,Double.valueOf(xValue.getText()));
         m[1]=findYInt(m[0], Double.valueOf(xValue.getText()), findYAtX(OGExp, OGCoeff, Double.valueOf(xValue.getText())));
-        graph(m,p,false); TANGENT LINE LOGIC, FIX PLS  */
+        m[2]=0;
+        m[3]=0;
+        System.out.println(m[0]);
+        System.out.println(m[1]);
+        graph(m, p, 2);
     }//GEN-LAST:event_computeMouseClicked
+
+    private void deriveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deriveMousePressed
+        jPanel2.removeAll();
+        jPanel2.updateUI();
+    }//GEN-LAST:event_deriveMousePressed
+
+    private void IntegrateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IntegrateMousePressed
+        jPanel2.removeAll();
+        jPanel2.updateUI();
+    }//GEN-LAST:event_IntegrateMousePressed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -24,7 +24,7 @@ public class TangentLine {
     }
     
     public static double findYInt(double slope, double x, double y){
-      return y - (slope*x);
+      return (y - (slope*x));
     }
     
 }
