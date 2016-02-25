@@ -33,11 +33,10 @@ public class PhysicsCalculator {
         double d;
         double m;
         double g;
-        double gf;
+        double f;
+        double cf;
         double net;
         int choice3b;
-        double cf;
-        double f;
         while (choice > 3 || choice < 1) {
             System.out.println("Select topic:");
             System.out.println("1: Kinematics");
@@ -294,7 +293,12 @@ public class PhysicsCalculator {
                     m = fricForce(choice3b, f, cf);
                     System.out.println("The mass of the object is " + m + "kg");
                 } else if (choice3b == 3) {
-
+                    System.out.println("Frictional Force = ?");
+                    f = kb.nextDouble();
+                    System.out.println("Mass of object = ?");
+                    m = kb.nextDouble();
+                    cf = fricForce(choice3b, f, m);
+                    System.out.println("The coefficient of friction is " + cf);  
                 }
             }
         }
@@ -302,10 +306,10 @@ public class PhysicsCalculator {
 
     /**
      *
-     * @param process
-     * @param first
-     * @param second
-     * @return
+     * @param process the mathematical operation to be performed
+     * @param first the first variable to be used
+     * @param second the second variable to be used
+     * @return the first variable multiplied or divided by the second
      */
     public static double netForce(int process, double first, double second) {
         if (process == 1) {
@@ -317,9 +321,9 @@ public class PhysicsCalculator {
 
     /**
      *
-     * @param process
-     * @param first
-     * @return
+     * @param process the mathematical operation to be performed
+     * @param first the first variable to be used
+     * @return the variable multiplied or divided by 9.8
      */
     public static double gravForce(int process, double first) {
         if (process == 1) {
@@ -330,10 +334,11 @@ public class PhysicsCalculator {
     }
 
     /**
-     *
-     * @param friction
-     * @param mass
-     * @return
+     * 
+     * @param process the mathematical operation to be performed
+     * @param first the first variable to be used
+     * @param second the second variable to be used
+     * @return the first variable multiplied or divided by the second and 9.8
      */
     public static double fricForce(int process, double first, double second) {
         if (process == 1) {
@@ -341,38 +346,6 @@ public class PhysicsCalculator {
         } else {
             return first / (second * 9.8);
         }
-    }
-
-    /**
-     *
-     * @param mass
-     * @param acc
-     * @return
-     */
-    public static double netForce(double mass, double acc) {
-        double nf = mass * acc;
-        return nf;
-    }
-
-    /**
-     *
-     * @param mass
-     * @return
-     */
-    public static double gravForce(double mass) {
-        double gf = mass * 9.8;
-        return gf;
-    }
-
-    /**
-     *
-     * @param friction
-     * @param mass
-     * @return
-     */
-    public static double fricForce(double friction, double mass) {
-        double ff = friction * mass * 9.8;
-        return ff;
     }
 
     /**
