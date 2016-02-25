@@ -54,6 +54,15 @@ public class financialCalculator {
             // Jordans stuff goes here
         }
     }
+        /**
+     * Calculates the final payout for simple and compound interest
+     *
+     * @param princiAmt The total amount to start with
+     * @param rate The interest rate
+     * @param numOfYears The number of years the interest takes affect
+     * @param numOfCompound The number of times the amount is compounded
+     * @return  This returns the final amount
+     */
     public static double simpleInterest(double princiAmt, double rate, double numOfYears) {
         double ammt = 0;
         rate = rate / 100;
