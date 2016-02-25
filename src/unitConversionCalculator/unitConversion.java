@@ -47,6 +47,7 @@ public class unitConversion {
         }
 
         Scanner keyboard = new Scanner(System.in);
+        
         System.out.println("imput your value");
         double imput = keyboard.nextDouble();
         System.out.println("imput your imput type");
@@ -61,7 +62,7 @@ public class unitConversion {
         System.out.println("input the amount of time to convert:");
         double time = keyboard.nextDouble();
 
-        System.out.println(timeconvertms(time1, time2, time) + " " + time2);
+        System.out.println(timeconvert(time1, time2, time) + " " + time2);
 
     }
 
@@ -76,30 +77,38 @@ public class unitConversion {
         return dist;
     }
 
-    public static double convertMass(double imput, String imputType, String outputType) {
-        /*
-      
-         */
+    /**
+     * convert units between grams, pounds and kilograms
+     * @param imput the value of the imputed unit
+     * @param imputType the type of the unit that was imputed
+     * @param outputType the requested output unit
+     * @return the imputed unit after being converted
+     */
+    public static double convertMass(double imput, String imputType, String outputType) { 
+        //initialize a variable for the outputs
         double output = 1.0;
+        //convert from grams
         if (imputType.equals("g") && (outputType.equals("kg"))) {
             output = imput / 1000;
         }
         if (imputType.equals("g") && (outputType.equals("pounds"))) {
             output = imput / 453.592;
         }
+        //convert from kg
         if (imputType.equals("kg") && (outputType.equals("pounds"))) {
             output = imput * 2.20462;
         }
         if (imputType.equals("kg") && (outputType.equals("g"))) {
             output = imput * 1000;
         }
+        //convert from pounds
         if (imputType.equals("pounds") && (outputType.equals("g"))) {
             output = imput * 453.592;
         }
         if (imputType.equals("pounds") && (outputType.equals("kg"))) {
             output = imput / 2.20462;
         }
-
+        //return the converted output
         return output;
 
     }
@@ -114,7 +123,7 @@ public class unitConversion {
      * @param time The amount of time to be converted
      * @return
      */
-    public static double timeconvertms(String time1, String time2, double time) {
+    public static double timeconvert(String time1, String time2, double time) {
 
         // make a new time variable equal to input
         double newtime = time;
