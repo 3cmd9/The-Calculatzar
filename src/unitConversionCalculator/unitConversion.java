@@ -19,7 +19,7 @@ public class unitConversion {
 
         System.out.println("Welcome to unit conversion!");
         System.out.println("We have the best converters");
-        
+
         do {
 
             System.out.println("Distance - Mass - Time");
@@ -69,6 +69,14 @@ public class unitConversion {
         } while (!choice.equals("stop"));
     }
 
+    /**
+     * convert units between mm, cm, dm, m, dm, hm, km
+     *
+     * @param dist the value of the distance
+     * @param cunit current unit the type of the unit that was inputed
+     * @param dUnit desired unit the requested output unit
+     * @return the converted unit
+     */
     public static double distanceConvert(double dist, int dUnit, int cUnit) {
 
         // everything compared to cm first and inch first
