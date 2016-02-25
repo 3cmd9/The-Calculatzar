@@ -16,6 +16,8 @@ public class financialCalculator {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        // Creating a formate with two decimal places for the output
+        DecimalFormat df = new DecimalFormat("#.##");
 
         System.out.println("Greetings! Which type of finance can I help you with today?");
         System.out.print("\n   Mortgage - 1\n   Interest - 2\n   Value - 3\n");
@@ -23,16 +25,14 @@ public class financialCalculator {
         // To calculate the monthly payment of a mortgage
         if (decision == 1) {
             System.out.print("Loan amount: ");
-            double loanAmount = input.nextDouble();
+            double loanAmount = input.nextDouble(); // Value in dollars of the loan
             System.out.print("Number of payments per year: ");
-            int num = input.nextInt();
+            int num = input.nextInt();   // Number of payments made in one year
             System.out.print("Number of years to repay loan: ");
-            int term = input.nextInt();
+            int term = input.nextInt(); // How many years the loan is to be payed off in
             System.out.print("Fixed interest rate: ");
-            double rate = input.nextDouble();
-            
-            DecimalFormat df = new DecimalFormat("#.##");
-            
+            double rate = input.nextDouble(); // The fixed interest rate of the loan
+            // Outputing the monthly bill
             System.out.print("Your monthly payment is, " + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
         } else if (decision == 2) {
             System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2\n");
@@ -55,9 +55,9 @@ public class financialCalculator {
             System.out.println("Would you like to determine future or present value? ");
             String answer = input.nextLine();
             answer = answer.toUpperCase();
-            if(answer.equals("FUTURE")){
+            if (answer.equals("FUTURE")) {
                 System.out.println("Thank you for selecting the future value calculator."
-                                        + " Please enter your present value. ");
+                        + " Please enter your present value. ");
                 double presentValue = input.nextDouble();
                 System.out.println("Please enter your interest rate. ");
                 double interestRate = input.nextDouble();
@@ -67,14 +67,15 @@ public class financialCalculator {
             }
         }
     }
-        /**
+
+    /**
      * Calculates the final payout for simple and compound interest
      *
      * @param princiAmt The total amount to start with
      * @param rate The interest rate
      * @param numOfYears The number of years the interest takes affect
      * @param numOfCompound The number of times the amount is compounded
-     * @return  This returns the final amount
+     * @return This returns the final amount
      */
     public static double simpleInterest(double princiAmt, double rate, double numOfYears) {
         double ammt = 0;
