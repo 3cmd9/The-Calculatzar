@@ -15,17 +15,21 @@ import java.util.Scanner;
 public class EssayCalculator {
 
     /**
-     * An input routine specifically for getting input with which to test the
-     * other methods in this class. Will be removed later, when these methods
-     * are being integrated into the main calculator.
+     * An input routine that allows the class' methods to be used. It allows
+     * input to be entered once, and any of the calculations to be made
+     * infinite times.
      *
      * @author Erica Garand
      * @param args
      */
     public static void main(String[] args) {
-        String input = "";
+        String input = "", pickOne = "";
         StringBuilder essay = new StringBuilder();
         Scanner keyboard = new Scanner(System.in);
+        boolean error;
+        
+        System.out.printf("Enter the essay to use in the calculations. "
+                + "Enter \'stop\' on a single line to move on.%n%n");
 
         do {
             if (keyboard.hasNext() == true) {
@@ -39,14 +43,47 @@ public class EssayCalculator {
         input = essay.toString();
 	//the method will use the String called 'input' to do the thing.
         //Ex. numberOfVowels(input);
-
-        //ERICA'S METHODS:
-        System.out.println("average word length: " + avgWordLength(input));
-        System.out.println("number of paragraphs: " + numberOfParagraphs(input));
-
-        //insert your method call here
+        
+        //this for loop will run forever and ever and ever.
+        for(;;){
+        do{
+            error = false;
+            System.out.printf("%n%nWhich calculation would you like to make?%n");
+            
+            // THIS IS THE MENU STRING:
+            System.out.printf("1: Average word length %n"
+                    + "2: Number of paragraphs %n"
+                    + "3: Insert method name here %n");
+            
+            pickOne = keyboard.next();
+            if (pickOne.matches("[0-9]+") == false){
+                error = true;
+                System.out.printf("%nError: invalid input. Please enter a number.");
+            }
+        }while (error == true);
+        
+        //ERICA'S METHODS: 
+        if (Integer.parseInt(pickOne) == 1)
+            System.out.printf("%nAverage Word Length: " + avgWordLength(input));
+        else if (Integer.parseInt(pickOne) == 2)
+            System.out.println("%nNumber of Paragraphs: " + numberOfParagraphs(input));
+        
+        //???'S METHODS
+        else if (Integer.parseInt(pickOne) == 3)
+            System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
+        else if (Integer.parseInt(pickOne) == 4)
+            System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
+        else if (Integer.parseInt(pickOne) == 5)
+            System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
+        else if (Integer.parseInt(pickOne) == 6)
+            System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
+        else if (Integer.parseInt(pickOne) == 7)
+            System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
+        }
     }
 
+    
+    
     /**
      * Returns a double representing the average length of the words within a
      * string. Words are defined as alphabetic characters separated by any kind
