@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Gavin Christie, Carter Ford & Jordan Hurley (Sort of)
+ * @author Gavin Christie, Carter Ford and Jordan Hurley (Sort of)
  */
 public class financialCalculator {
 
