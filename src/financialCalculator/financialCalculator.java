@@ -32,7 +32,8 @@ public class financialCalculator {
             
             DecimalFormat df = new DecimalFormat("#.##");
             
-            System.out.print("Your monthly payment is, " + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
+            System.out.print("Your monthly payment is, " 
+                    + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
         } else if (decision == 2) {
             System.out.print("\nWhat type of Interest?\n   Simple - 1\n   Compound - 2\n");
             int typeOfInter = input.nextInt();
@@ -62,12 +63,13 @@ public class financialCalculator {
                 double interestRate = input.nextDouble();
                 System.out.println("Finally enter the desired time period. ");
                 double numberOfYears = input.nextDouble();
-                System.out.println(futureValue(presentValue, interestRate, numberOfYears));
+                System.out.println("Your future value is" 
+                        + df.format(futureValue(presentValue, interestRate, numberOfYears)));
             }
         }
     }
         /**
-     * Calculates the final payout for simple and compound interest
+     * Calculates the final pay out for simple and compound interest
      *
      * @param princiAmt The total amount to start with
      * @param rate The interest rate
@@ -109,6 +111,14 @@ public class financialCalculator {
         return payment;
     }
 
+    /**
+     * Calculate what the user's future value will be based on their present value, 
+     *                  the interest and the number of years that will pass
+     * @param presentValue The amount the user started with
+     * @param interestRate The interest rate the user will receive on top of their present value
+     * @param numberOfYears  The number of years that will pass in order to receive the future value
+     * @return This returns the future value
+     */
     public static double futureValue(double presentValue, double interestRate, double numberOfYears) {
         double FV = presentValue * Math.pow((1 + interestRate), numberOfYears);
         return FV;
