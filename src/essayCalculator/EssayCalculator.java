@@ -55,7 +55,8 @@ public class EssayCalculator {
                         + "2: Number of paragraphs %n"
                         + "3: Number of Capital Letters %n"
                         + "4: Number of Lower Case Letters %n"
-                        + "5: Number of Spaces %n");
+                        + "5: Number of Spaces %n"
+                        + "6: Number of vowels");
 
                 pickOne = keyboard.next();
                 if (pickOne.matches("[0-9]+") == false) {
@@ -78,9 +79,9 @@ public class EssayCalculator {
                 System.out.println(countingSpaces(input));
             } //??'S METHODS
             else if (Integer.parseInt(pickOne) == 6) {
-                System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
-            } else if (Integer.parseInt(pickOne) == 7) {
-                System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
+                System.out.println(Vowel(input));
+            } else {
+                System.out.println("Enter a number between 1 and 6");
             }
         }
     }
@@ -147,7 +148,7 @@ public class EssayCalculator {
         //loop through essay
          //once it comes across a, e, i ,o or u, add one to the appropriate letter 
     //selby j
-        public static void Vowel(String essay){
+        public static String Vowel(String essay){
     System.out.println("Please input essay");
     
  //    char A='a', E='e', I='i', O='o', U='u';
@@ -170,7 +171,7 @@ public class EssayCalculator {
                vowel[4]= vowel[4] +1;
                }
        }
-       System.out.println("a=" + vowel[0] + " " +"e=" + vowel[1] + " " +"i=" +vowel[2] + " " +"o=" + vowel[3] + " " +"u=" + vowel[4]);
+       return("a=" + vowel[0] + " " +"e=" + vowel[1] + " " +"i=" +vowel[2] + " " +"o=" + vowel[3] + " " +"u=" + vowel[4]);
         }
 
 public static String countingCaps(String essay) {
