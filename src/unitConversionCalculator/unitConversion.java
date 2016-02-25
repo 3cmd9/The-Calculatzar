@@ -55,30 +55,39 @@ public class unitConversion {
         return dist;
     }
 
+    /**
+     * convert units between grams, pounds and kilograms
+     * @param imput the value of the imputed unit
+     * @param imputType the type of the unit that was imputed
+     * @param outputType the requested output unit
+     * @return the imputed unit after being converted
+     */
     public static double convertMass(double imput, String imputType, String outputType) {
-        /*
-      
-         */
+       
+        //initialize a variable for the outputs
         double output = 1.0;
+        //convert from grams
         if (imputType.equals("g") && (outputType.equals("kg"))) {
             output = imput / 1000;
         }
         if (imputType.equals("g") && (outputType.equals("pounds"))) {
             output = imput / 453.592;
         }
+        //convert from kg
         if (imputType.equals("kg") && (outputType.equals("pounds"))) {
             output = imput * 2.20462;
         }
         if (imputType.equals("kg") && (outputType.equals("g"))) {
             output = imput * 1000;
         }
+        //convert from pounds
         if (imputType.equals("pounds") && (outputType.equals("g"))) {
             output = imput * 453.592;
         }
         if (imputType.equals("pounds") && (outputType.equals("kg"))) {
             output = imput / 2.20462;
         }
-
+        //return the converted output
         return output;
 
     }
