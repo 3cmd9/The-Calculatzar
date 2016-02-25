@@ -15,9 +15,9 @@ import java.util.Scanner;
 public class EssayCalculator {
 
     /**
-     * An input routine specifically for getting input with which to test the
-     * other methods in this class. Will be removed later, when these methods
-     * are being integrated into the main calculator.
+     * An input routine that allows the class' methods to be used. It allows
+     * input to be entered once, and any of the calculations to be made
+     * infinite times.
      *
      * @author Erica Garand
      * @param args
