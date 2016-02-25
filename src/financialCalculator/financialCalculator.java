@@ -17,9 +17,10 @@ public class financialCalculator {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Greetings! Which type of finance can I help you with today? :3");
-        System.out.print("\n   Mortgage - 1\n   Interest - 2\n   No Idea - 3\n");
+        System.out.println("Greetings! Which type of finance can I help you with today?");
+        System.out.print("\n   Mortgage - 1\n   Interest - 2\n   Value - 3\n");
         int decision = input.nextInt();
+        // To calculate the monthly payment of a mortgage
         if (decision == 1) {
             System.out.print("Loan amount: ");
             double loanAmount = input.nextDouble();
@@ -51,7 +52,19 @@ public class financialCalculator {
                 System.out.println(compoundInterest(princiAmt, rate, numOfComp, numOfYears));
             }
         } else if (decision == 3) {
-            // Jordans stuff goes here
+            System.out.println("Would you like to determine future or present value? ");
+            String answer = input.nextLine();
+            answer = answer.toUpperCase();
+            if(answer.equals("FUTURE")){
+                System.out.println("Thank you for selecting the future value calculator."
+                                        + " Please enter your present value. ");
+                double presentValue = input.nextDouble();
+                System.out.println("Please enter your interest rate. ");
+                double interestRate = input.nextDouble();
+                System.out.println("Finally enter the desired time period. ");
+                double numberOfYears = input.nextDouble();
+                System.out.println(futureValue(presentValue, interestRate, numberOfYears));
+            }
         }
     }
         /**
@@ -85,7 +98,7 @@ public class financialCalculator {
      * @param numPayments The number of payments per year
      * @param loanTerm The number of years over which the money will be repaid
      * @param rate The annual interest rate
-     * @return  This returns the monthly payment value
+     * @return This returns the monthly payment value
      */
     public static double mortgage(double loanAmount, int numPayments, int loanTerm, double rate) {
         double payment;
