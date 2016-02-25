@@ -11,22 +11,25 @@ import java.util.Scanner;
  *
  * @author 070101720
  */
-import java.util.Scanner;
 
 public class EssayCalculator {
 
     /**
-     * An input routine specifically for getting input with which to test the
-     * other methods in this class. Will be removed later, when these methods
-     * are being integrated into the main calculator.
+     * An input routine that allows the class' methods to be used. It allows
+     * input to be entered once, and any of the calculations to be made
+     * infinite times.
      *
      * @author Erica Garand
      * @param args
      */
     public static void main(String[] args) {
-        String input = "";
+        String input = "", pickOne = "";
         StringBuilder essay = new StringBuilder();
         Scanner keyboard = new Scanner(System.in);
+        boolean error;
+        
+        System.out.printf("Enter the essay to use in the calculations. "
+                + "Enter \'stop\' on a single line to move on.%n%n");
 
         do {
             if (keyboard.hasNext() == true) {
@@ -40,14 +43,50 @@ public class EssayCalculator {
         input = essay.toString();
 	//the method will use the String called 'input' to do the thing.
         //Ex. numberOfVowels(input);
+        
+        //this for loop will run forever and ever and ever.
+           for (;;) {
+            do {
+                error = false;
+                System.out.printf("%n%nWhich calculation would you like to make?%n");
 
-        //ERICA'S METHODS:
-        System.out.println("average word length: " + avgWordLength(input));
-        System.out.println("number of paragraphs: " + numberOfParagraphs(input));
+                // THIS IS THE MENU STRING:
+                System.out.printf("1: Average word length %n"
+                        + "2: Number of paragraphs %n"
+                        + "3: Number of Capital Letters %n"
+                        + "4: Number of Lower Case Letters %n"
+                        + "5: Number of Spaces %n");
 
-        //insert your method call here
+                pickOne = keyboard.next();
+                if (pickOne.matches("[0-9]+") == false) {
+                    error = true;
+                    System.out.printf("%nError: invalid input. Please enter a number.");
+                }
+            } while (error == true);
+
+            //ERICA'S METHODS: 
+            if (Integer.parseInt(pickOne) == 1) {
+                System.out.printf("%nAverage Word Length: " + avgWordLength(input));
+            } else if (Integer.parseInt(pickOne) == 2) {
+                System.out.printf("%nNumber of Paragraphs: " + numberOfParagraphs(input));
+            } //STEPHANIE'S METHODS
+            else if (Integer.parseInt(pickOne) == 3) {
+                System.out.println(countingLower(input));
+            } else if (Integer.parseInt(pickOne) == 4) {
+                System.out.println(countingCaps(input));
+            } else if (Integer.parseInt(pickOne) == 5) {
+                System.out.println(countingSpaces(input));
+            } //??'S METHODS
+            else if (Integer.parseInt(pickOne) == 6) {
+                System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
+            } else if (Integer.parseInt(pickOne) == 7) {
+                System.out.println("Enter your method call here, and put the number it's triggered by in the menu string above.");
+            }
+        }
     }
 
+    
+    
     /**
      * Returns a double representing the average length of the words within a
      * string. Words are defined as alphabetic characters separated by any kind
@@ -101,49 +140,84 @@ public class EssayCalculator {
         return count;
     }
 
-    public static void countingCaps(String essay) {
+            
+         
+         
+         //Vowel count time!
+        //loop through essay
+         //once it comes across a, e, i ,o or u, add one to the appropriate letter 
+    //selby j
+        public static void Vowel(String essay){
+    System.out.println("Please input essay");
+    
+ //    char A='a', E='e', I='i', O='o', U='u';
+       int vowel[] = new int [5];
+       
+       for(int i =0; i<essay.length();i++){
+           if (essay.charAt(i) == 'a'){
+                   vowel[0] = vowel[0] +1;
+           }
+       else if (essay.charAt(i) == 'e'){
+               vowel[1]= vowel[1] +1;
+               }
+       else if (essay.charAt(i) == 'i'){
+               vowel[2]=  vowel[2] +1;
+               }
+       else if (essay.charAt(i) == 'o'){
+               vowel[3]=  vowel[3] +1;
+               }
+       else if (essay.charAt(i) == 'u'){
+               vowel[4]= vowel[4] +1;
+               }
+       }
+       System.out.println("a=" + vowel[0] + " " +"e=" + vowel[1] + " " +"i=" +vowel[2] + " " +"o=" + vowel[3] + " " +"u=" + vowel[4]);
+        }
+
+public static String countingCaps(String essay) {
         String Letter = "";
         //Count Capital Letters and Lower Case Letters:
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         char[] letters = alphabet.toCharArray();
-        for (int i = 0; i < essay.length(); i++) {
+        int q;
+        for (int i = 0; i < letters.length; i++) {
             int HowMany = 0;
-            for (int q = 0; q < letters.length; q++) {
-                if (essay.charAt(i) == letters[q]) {
+            for (q = 0; q < essay.length(); q++) {
+                if (essay.charAt(q) == letters[i]) {
                     HowMany++;
                 }
             }
             if (HowMany != 0) {
-                Letter = Letter + letters[i] + ":" + HowMany + " ";
+                Letter = Letter + HowMany + " " + letters[i] + "('s), ";
             }
         }
-        System.out.println("There are: " + Letter);
+        return ("This essay contains " + Letter);
     }
 
-    public static void countingLower(String essay) {
+    public static String countingLower(String essay) {
         String Letter = "";
         //Count Capital Letters and Lower Case Letters:
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         char[] letters = alphabet.toCharArray();
-        for (int i = 0; i < essay.length(); i++) {
+        int q;
+        for (int i = 0; i < letters.length; i++) {
             int HowMany = 0;
-            for (int a = 0; a < letters.length; a++) {
-                if (essay.charAt(i) == letters[a]) {
+            for (q = 0; q < essay.length(); q++) {
+                if (essay.charAt(q) == letters[i]) {
                     HowMany++;
                 }
             }
             if (HowMany != 0) {
-                Letter = Letter + letters[i] + ":" + HowMany + " ";
+                Letter = Letter + HowMany + " " + letters[i] + "('s), ";
             }
         }
-        System.out.println("There are: " + Letter);
+        return ("This essay contains " + Letter);
     }
 
-    public static void countingSpaces(String essay) {
+    public static String countingSpaces(String essay) {
         String Letter = "";
         //Count Capital Letters and Lower Case Letters:
         String space = "\\s";
-        int HowMany = 0;
+        int HowMany = -2;
 
         for (int i = 0; i < essay.length(); i++) {
 
@@ -151,8 +225,20 @@ public class EssayCalculator {
                 HowMany++;
             }
         }
+
         if (HowMany != 0) {
-            System.out.println("There are: " + HowMany + " spaces in the essay");
+            return ("There are " + HowMany + " spaces in this essay");
+        } else {
+            return ("There are no spaces in this essay");
+
         }
     }
+   
+    
+         
+         
+         
+         //if = a + 1 to 0
+   
+    
 }
