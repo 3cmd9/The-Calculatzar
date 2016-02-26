@@ -34,7 +34,7 @@ public class financialCalculator {
 
             System.out.print("Your monthly payment is, "
                     + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
-            
+
             // Outputing the monthly bill
             System.out.print("Your monthly payment is, " + df.format(mortgage(loanAmount, num, term, rate)) + "\n");
         } else if (decision == 2) {
@@ -68,6 +68,16 @@ public class financialCalculator {
                 double numberOfYears = input.nextDouble();
                 System.out.println("Your future value is"
                         + df.format(futureValue(presentValue, interestRate, numberOfYears)));
+            } else if (answer.equals("PRESENT")) {
+                System.out.println("Thank you for selecting the present value calculator."
+                        + " Please enter your future value. ");
+                double futureMoney = input.nextDouble();
+                System.out.println("Please enter your interest rate. ");
+                double interestRate = input.nextDouble();
+                System.out.println("Finally enter the desired time period. ");
+                double numberOfYears = input.nextDouble();
+                System.out.println("Your present value is"
+                        + df.format(currentValue(futureMoney, interestRate, numberOfYears)));
             }
         }
     }
@@ -129,5 +139,10 @@ public class financialCalculator {
     public static double futureValue(double presentValue, double interestRate, double numberOfYears) {
         double FV = presentValue * Math.pow((1 + interestRate), numberOfYears);
         return FV;
+    }
+
+    public static double currentValue(double futureMoney, double interestRate, double numberOfYears) {
+        double PV = futureMoney / (Math.pow((1 + interestRate), numberOfYears));
+        return PV;
     }
 }
